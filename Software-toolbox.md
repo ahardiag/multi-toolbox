@@ -25,6 +25,24 @@
 
 <!-- /TOC -->
 
+## Github
+### Save a token (password key)
+```Bash
+git config --global credential.helper cache
+```
+It must be done after using a git command and given explicitly the token
+
+### Deposit of a source code on HAL
+How to ?
+Slides:
+https://hal.archives-ouvertes.fr/hal-01872189
+
+Website version:
+https://doc.archives-ouvertes.fr/deposer/deposer-le-code-source/
+
+List of Licences :
+https://spdx.org/licenses/
+
 ## Google Drive on linux architecture
 ### Via Google-drive-ocamlfuse
 https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
