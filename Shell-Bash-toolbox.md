@@ -23,7 +23,9 @@
             - [Lien symbolique vers .local/bin/ :](#lien-symbolique-vers-localbin-)
             - [Donner la valeur d’une variable d’environnnement :](#donner-la-valeur-dune-variable-denvironnnement-)
         - [Arguments in bash scripts](#arguments-in-bash-scripts)
-            - [Using getops](#using-getops)
+            - [Getops simple example](#getops-simple-example)
+            - [Getops example with check validity of the arguments](#getops-example-with-check-validity-of-the-arguments)
+            - [deactivate/Activate wildcard recognition](#deactivateactivate-wildcard-recognition)
         - [Conditions in bash languages:](#conditions-in-bash-languages)
             - [Bash yes/no test](#bash-yesno-test)
             - [exit  from a _while_ loop](#exit--from-a-_while_-loop)
@@ -213,7 +215,7 @@ echo $Nom_de_la variable
 
 ### Arguments in bash scripts
 
-#### Using getops
+#### Getops simple example
 Invonvenients : it is not able to parse GNU-style long options (```--myoption```) nor XF86-style long options (```-myoption```)
 ```bash
 file=''
@@ -230,6 +232,17 @@ while getopts 'f:' flag; do
   esac
 done
 ```
+
+
+#### Getops example with check validity of the arguments
+
+
+#### deactivate/Activate wildcard recognition
+```Bash
+set -f
+set +f
+```
+
 ### Conditions in bash languages:
 
 [https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php)
