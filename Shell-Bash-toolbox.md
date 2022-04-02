@@ -548,6 +548,15 @@ sed -i 's/.*MOTIF.*/WHOLE LINE/' file
 #### Sort a list of filename in the good order including 1-9 numbers
 ```Bash
 ls *1000* | sort --version-sort
+ls -v1 *png
+```
+With output in a single line :
+```Bash
+ls -v1 *png | xargs
+```
+Use the result as input for a command COMMAND :
+```Bash
+ls -v1 *png | xargs COMMAND
 ```
 #### Récupérer un mot dans une suite de mots
 ```Bash

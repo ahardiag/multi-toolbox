@@ -43,6 +43,17 @@ https://doc.archives-ouvertes.fr/deposer/deposer-le-code-source/
 List of Licences :
 https://spdx.org/licenses/
 
+## Zotero
+### Backup/Restore Zotero
+https://aut.ac.nz.libguides.com/zotero/backup
+### Repair sqlite
+https://www.zotero.org/utils/dbfix/
+- Do a backup of Zotero
+- Close Zotero
+- Upload .sqlite file
+- Download the new .sqlite file and replace teh old one in the Zotero folder
+- Restart Zotero
+
 ## Google Drive on linux architecture
 ### Via Google-drive-ocamlfuse
 https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
