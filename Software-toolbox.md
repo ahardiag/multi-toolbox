@@ -3,6 +3,13 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
+    - [NextCloud](#nextcloud)
+    - [Github](#github)
+        - [Save a token password key](#save-a-token-password-key)
+        - [Deposit of a source code on HAL](#deposit-of-a-source-code-on-hal)
+    - [Zotero](#zotero)
+        - [Backup/Restore Zotero](#backuprestore-zotero)
+        - [Repair sqlite](#repair-sqlite)
     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
     - [Markdown using VS Code](#markdown-using-vs-code)
@@ -25,7 +32,17 @@
 
 <!-- /TOC -->
 
+## NextCloud
+Works in Ubuntu 18.04 :
+```Bash
+sudo add-apt-repository ppa:nextcloud-devs/client
+sudo apt install nextcloud-client nextcloud-client-nautilus
+sudo apt install nextcloud-desktop
+```
+
+
 ## Github
+
 ### Save a token (password key)
 ```Bash
 git config --global credential.helper cache
@@ -44,8 +61,10 @@ List of Licences :
 https://spdx.org/licenses/
 
 ## Zotero
+
 ### Backup/Restore Zotero
 https://aut.ac.nz.libguides.com/zotero/backup
+
 ### Repair sqlite
 https://www.zotero.org/utils/dbfix/
 - Do a backup of Zotero
@@ -55,11 +74,14 @@ https://www.zotero.org/utils/dbfix/
 - Restart Zotero
 
 ## Google Drive on linux architecture
+
 ### Via Google-drive-ocamlfuse
 https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 
 ## Markdown (using VS Code)
+
 #### Preview of the markdown file on the side : CTRL+K V
+
 #### Extensions :
 - **Markdown Preview Enhanced** : preview of markdown
 - **Markdown PDF** : to convert onin pdf format
@@ -74,17 +96,20 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 ```
 
 ## Tcl-VMD toolbox
+
 #### Render in png format with tachyon
 ```Tcl
 render Tachyon myfigure  "/usr/local/lib/vmd/tachyon_LINUXAMD64" -aasamples 12 %s -format BMP -res 2400 2146 -o %s.bmp
 convert myfigure.bmp myfigure.png
 ```
+
 #### Render a snapshot
 ```Tcl
 set filename path_to_file
 render snapshot $filename.tga
 convert $filename.tga $filename.png
 ```
+
 #### Operations on list 
 ```Tcl
 vecaad
@@ -177,14 +202,17 @@ A password is sometimes needed
 ```Bash
 jupyter notebook list
 ```
+
 #### Delete a jupyter server :
 ```Bash
 jupyter notebook stop 9999
 ```
+
 #### Delete all jupyter servers and possible crashed servers :
 ```Bash
 rm -i /home/hardiagon/.local/share/jupyter/runtime/*
 ```
+
 #### Use VPN on Debian 10 (machine sirius)
 ```Bash
 # Activate VPN 
