@@ -21,6 +21,7 @@
             - [Render a snapshot](#render-a-snapshot)
             - [Operations on list](#operations-on-list)
             - [Wrap a selection](#wrap-a-selection)
+            - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
     - [VSCode](#vscode)
     - [Inkscape](#inkscape)
     - [VPN](#vpn)
@@ -29,6 +30,8 @@
             - [Delete a jupyter server :](#delete-a-jupyter-server-)
             - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
+    - [Movie converter](#movie-converter)
+            - [Decrease size of a movie and convert format](#decrease-size-of-a-movie-and-convert-format)
 
 <!-- /TOC -->
 
@@ -122,6 +125,12 @@ vecinvers
 pbc wrap -compound "residue"
 ```
 
+#### draw a dashed line between two atoms and a measure distance
+Menu `Mouse-> Lables->Bond(2)`
+Or
+` ALT`+`2`
+Or `2` on the Numeric Pad
+The second method allows to pass from one mouse menu to another (`ALT`+`1`, `ALT`+`2`,...)
 ## VSCode
 Utiliser un lecteur de markdown : F1 -> markdown preview enhances -> Install
 compiler : CTRL+Shift+V
@@ -232,3 +241,11 @@ Rk : To do it automatically,  one can write this on a script called vpn which pa
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTgwNjE4NTM0Ml19
 -->
+
+
+## Movie converter
+
+#### Decrease size of a movie and convert format 
+```Bash
+ffmpeg -i movie_H01_pure_water_C770.mpg -ss 10 -fs  10000000    movie_H01_pure_water_C770.mp4
+```
