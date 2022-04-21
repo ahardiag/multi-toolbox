@@ -9,43 +9,45 @@
             - [Delete a server method1:](#delete-a-server-method1)
             - [Delete a server method2:](#delete-a-server-method2)
     - [BASH Syntax](#bash-syntax)
-            - [List last mmodifications in a file](#list-last-mmodifications-in-a-file)
+            - [List last modifications in a file](#list-last-modifications-in-a-file)
             - [Redirect error on output](#redirect-error-on-output)
             - [Connaitre le chemin d’accès d’une application exécutable](#connaitre-le-chemin-dacc%C3%A8s-dune-application-ex%C3%A9cutable)
             - [Effacer tous les fichiers du répertoire courant sauf fichier1 et fichier2](#effacer-tous-les-fichiers-du-r%C3%A9pertoire-courant-sauf-fichier1-et-fichier2)
-            - [Affiche un court texte sur le terminal et peut concaténer deux fichiers :](#affiche-un-court-texte-sur-le-terminal-et-peut-concat%C3%A9ner-deux-fichiers-)
+            - [Affiche un court texte sur le terminal et peut concaténer deux fichiers](#affiche-un-court-texte-sur-le-terminal-et-peut-concat%C3%A9ner-deux-fichiers)
             - [Donne des infos sur nombre de lignes, mots et octets d’un fichier](#donne-des-infos-sur-nombre-de-lignes-mots-et-octets-dun-fichier)
             - [Afficher chemin du répertoire courant](#afficher-chemin-du-r%C3%A9pertoire-courant)
-            - [Ajouter du texte à la fin d’ un fichier non protégé :](#ajouter-du-texte-%C3%A0-la-fin-d-un-fichier-non-prot%C3%A9g%C3%A9-)
+            - [Ajouter du texte à la fin d’ un fichier non protégé](#ajouter-du-texte-%C3%A0-la-fin-d-un-fichier-non-prot%C3%A9g%C3%A9)
             - [Afficher le chemin d’un fichier](#afficher-le-chemin-dun-fichier)
-            - [Connaitre la taille d’un répertoire :](#connaitre-la-taille-dun-r%C3%A9pertoire-)
-            - [Connaitre la taille des fichiers :](#connaitre-la-taille-des-fichiers-)
-            - [Lien symbolique vers .local/bin/ :](#lien-symbolique-vers-localbin-)
-            - [Donner la valeur d’une variable d’environnnement :](#donner-la-valeur-dune-variable-denvironnnement-)
+            - [Connaitre la taille d’un répertoire](#connaitre-la-taille-dun-r%C3%A9pertoire)
+            - [Connaitre la taille des fichiers](#connaitre-la-taille-des-fichiers)
+            - [Lien symbolique vers .local/bin/](#lien-symbolique-vers-localbin)
+            - [Donner la valeur d’une variable d’environnnement](#donner-la-valeur-dune-variable-denvironnnement)
         - [Arguments in bash scripts](#arguments-in-bash-scripts)
             - [Getops simple example](#getops-simple-example)
             - [Getops example with check validity of the arguments](#getops-example-with-check-validity-of-the-arguments)
             - [deactivate/Activate wildcard recognition](#deactivateactivate-wildcard-recognition)
-        - [Conditions in bash languages:](#conditions-in-bash-languages)
+        - [Conditions in bash languages](#conditions-in-bash-languages)
             - [Bash yes/no test](#bash-yesno-test)
             - [exit  from a _while_ loop](#exit--from-a-_while_-loop)
             - [Tester si un fichier,répertoire existe bash](#tester-si-un-fichierr%C3%A9pertoire-existe-bash)
             - [Wildcard in bash](#wildcard-in-bash)
-            - [Créer des alias sur shell :](#cr%C3%A9er-des-alias-sur-shell-)
-            - [Connaître répartition de la mémoire disque :](#conna%C3%AEtre-r%C3%A9partition-de-la-m%C3%A9moire-disque-)
+            - [Créer des alias sur shell](#cr%C3%A9er-des-alias-sur-shell)
+            - [Connaître répartition de la mémoire disque](#conna%C3%AEtre-r%C3%A9partition-de-la-m%C3%A9moire-disque)
             - [Suppprimer/insérer les lignes d’un fichier](#suppprimerins%C3%A9rer-les-lignes-dun-fichier)
         - [Syntax AWK](#syntax-awk)
             - [Pass variables to awk](#pass-variables-to-awk)
             - [Get the string between one/two separator with awk](#get-the-string-between-onetwo-separator-with-awk)
             - [Replace one column of a file f1 with the column of another file f2](#replace-one-column-of-a-file-f1-with-the-column-of-another-file-f2)
             - [Get only the part of a file between two matching term excluding matching lines and including them](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
-            - [Transforme une colonne en ligne avec élément séparé par un espace :](#transforme-une-colonne-en-ligne-avec-%C3%A9l%C3%A9ment-s%C3%A9par%C3%A9-par-un-espace-)
+            - [Transform a ouptut in column to a unique row with a white space separation](#transform-a-ouptut-in-column-to-a-unique-row-with-a-white-space-separation)
             - [Récupère des données utilisant la la ligne,colonne, motif avec awk](#r%C3%A9cup%C3%A8re-des-donn%C3%A9es-utilisant-la-la-lignecolonne-motif-avec-awk)
         - [Backup and tarball files](#backup-and-tarball-files)
             - [Updating a existing tar file by adding/updating a subdirectory; create the archive it if not exist](#updating-a-existing-tar-file-by-addingupdating-a-subdirectory-create-the-archive-it-if-not-exist)
             - [Untar an archive folder in another name](#untar-an-archive-folder-in-another-name)
             - [Untar only a sub directory of a compressed file and forget the first two parents](#untar-only-a-sub-directory-of-a-compressed-file-and-forget-the-first-two-parents)
             - [Créer tar/Extraire tar](#cr%C3%A9er-tarextraire-tar)
+        - [Command ls](#command-ls)
+            - [List all folders in the current directory](#list-all-folders-in-the-current-directory)
         - [Command find](#command-find)
             - [Case sensitive](#case-sensitive)
             - [Case insensitive](#case-insensitive)
@@ -58,9 +60,10 @@
         - [Command grep](#command-grep)
             - [Return lines of a files that do not start by ‘ ‘, #, ;](#return-lines-of-a-files-that-do-not-start-by----)
             - [Catch several matching term in any order with grep through perl](#catch-several-matching-term-in-any-order-with-grep-through-perl)
+        - [Get the fiile and line number where a pattern appears in all directories](#get-the-fiile-and-line-number-where-a-pattern-appears-in-all-directories)
         - [Command sed](#command-sed)
             - [Delete the lines lying between PATTERN-1 and PATTERN-2 , excluding the lines containing these patterns from here](#delete-the-lines-lying-between-pattern-1-and-pattern-2--excluding-the-lines-containing-these-patterns-from-here)
-            - [Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns:](#delete-the-lines-lying-between-pattern-1-and-pattern-2--including-the-lines-containing-these-patterns)
+            - [Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns](#delete-the-lines-lying-between-pattern-1-and-pattern-2--including-the-lines-containing-these-patterns)
             - [Delete all the lines after PATTERN-2, use this](#delete-all-the-lines-after-pattern-2-use-this)
             - [Do sed command ex add a symbol “_” in the 17th position only in a range of rows between line1 and line2](#do-sed-command-ex-add-a-symbol-_-in-the-17th-position-only-in-a-range-of-rows-between-line1-and-line2)
             - [Delete 10 lines after matching a term](#delete-10-lines-after-matching-a-term)
@@ -85,7 +88,7 @@
             - [Trouver un programme affiché dans Gnome touche Windows](#trouver-un-programme-affich%C3%A9-dans-gnome-touche-windows)
             - [Renommer plusieurs fichiers avec wildcard](#renommer-plusieurs-fichiers-avec-wildcard)
             - [Vérifier si un argument est fourni avec l’executable en bash](#v%C3%A9rifier-si-un-argument-est-fourni-avec-lexecutable-en-bash)
-            - [Remplacer du texte dan un template avec sed:](#remplacer-du-texte-dan-un-template-avec-sed)
+            - [Remplacer du texte dan un template avec sed](#remplacer-du-texte-dan-un-template-avec-sed)
             - [Changer les couleurs par défaut de la commande ls LS_COLORS variable](#changer-les-couleurs-par-d%C3%A9faut-de-la-commande-ls-ls_colors-variable)
             - [Lancer un processus en arrière-plan sans tuer le processus en quittant le terminal](#lancer-un-processus-en-arri%C3%A8re-plan-sans-tuer-le-processus-en-quittant-le-terminal)
     - [Tunnel SSH](#tunnel-ssh)
@@ -97,12 +100,14 @@
         - [Caractéristiques nvidia-smi](#caract%C3%A9ristiques-nvidia-smi)
     - [Permissions de dossier/fichier](#permissions-de-dossierfichier)
     - [Bash System Settings](#bash-system-settings)
-        - [Changer de serveur DNS :](#changer-de-serveur-dns-)
+        - [Changer de serveur DNS](#changer-de-serveur-dns)
             - [Generated by NetworkManager](#generated-by-networkmanager)
                 - [Generated by NetworkManager](#generated-by-networkmanager)
-            - [Connaitre la version debian et nom du processeur:](#connaitre-la-version-debian-et-nom-du-processeur)
+            - [Connaitre la version debian et nom du processeur](#connaitre-la-version-debian-et-nom-du-processeur)
+        - [Processus](#processus)
             - [Tuer un processus :](#tuer-un-processus-)
-    - [Jupyter :](#jupyter-)
+            - [Get more info about current processus](#get-more-info-about-current-processus)
+    - [Jupyter](#jupyter)
             - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
             - [Chercher les versions de python installées :](#chercher-les-versions-de-python-install%C3%A9es-)
             - [Instal Latex : debian 7](#instal-latex--debian-7)
@@ -113,7 +118,7 @@
             - [Fusion of pdfs](#fusion-of-pdfs)
         - [Install Settings](#install-settings)
             - [Installer un software sur /opt/ au lieu de ur/local/ from here](#installer-un-software-sur-opt-au-lieu-de-urlocal-from-here)
-            - [Changer la longueur du nom de chemin du dossier courant:](#changer-la-longueur-du-nom-de-chemin-du-dossier-courant)
+            - [Changer la longueur du nom de chemin du dossier courant](#changer-la-longueur-du-nom-de-chemin-du-dossier-courant)
             - [Configurer les paramètres d’affichage écran : unity-tweak-tool](#configurer-les-param%C3%A8tres-daffichage-%C3%A9cran--unity-tweak-tool)
             - [Connaitre si un paquet est installé :](#connaitre-si-un-paquet-est-install%C3%A9-)
             - [Chercher dans apt :](#chercher-dans-apt-)
@@ -144,7 +149,7 @@ kill PID
 ```
 ## BASH Syntax
 
-#### List last mmodifications in a file
+#### List last modifications in a file
 ```Bash
 find -printf "%TY-%Tm-%Td %TT %p\n" | sort -n
 ```
@@ -163,7 +168,7 @@ rm -v !(fichier2"|"fichier1")
 ```
 (`-v` ou `-verbose` explique ce qui est fait)
 
-#### Affiche un court texte sur le terminal et peut concaténer deux fichiers :
+#### Affiche un court texte sur le terminal et peut concaténer deux fichiers
 ```Bash
 cat fichier1
 cat fichier1 fichier2 > fichier3
@@ -181,7 +186,7 @@ cat fichier |wc -l (donne le nombre de lignes dans fichier)
 ```Bash
 pwd
 ```
-#### Ajouter du texte à la fin d’ un fichier (non) protégé :  
+#### Ajouter du texte à la fin d’ un fichier (non) protégé  
 ```Bash
 echo ‘mon_texte’ >> fichier
 echo ‘mon_texte’ # écris simplement sur le bash
@@ -196,19 +201,19 @@ echo -n texte_a completer >>fichier.dat -> ecrit dans un fichier et empêche le 
 locate -i nom_du_fichier
 Whereis <application> #cherche le chemin d’une application
 ```
-#### Connaitre la taille d’un répertoire :
+#### Connaitre la taille d’un répertoire
 ```Bash
 du -sh /chemin/répertoire
 ```
-#### Connaitre la taille des fichiers :
+#### Connaitre la taille des fichiers
 ```Bash
 ls -lsha
 ```
-#### Lien symbolique vers .local/bin/ :
+#### Lien symbolique vers .local/bin/
 ```Bash
 ln -s /absolute/path/to/exec/ /absolute/path/to/home/.local/bin/exec_file
 ```
-#### Donner la valeur d’une variable d’environnnement :
+#### Donner la valeur d’une variable d’environnnement
 ```Bash
 echo $Nom_de_la variable
 ```
@@ -243,7 +248,7 @@ set -f
 set +f
 ```
 
-### Conditions in bash languages:
+### Conditions in bash languages
 
 [https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php)
 
@@ -288,7 +293,7 @@ rm [a-h0-6]*.txt #efface tous les fichiers txt commençant par une lettre entre 
 ```
   
 
-#### Créer des alias sur shell :
+#### Créer des alias sur shell
 
 Dans .bashrc : `alias funcname “ <command> “`
 In a Fish terminal :
@@ -297,7 +302,7 @@ alias <funcname> “<command>”
 funcsave <funcname>
 ```
 
-#### Connaître répartition de la mémoire disque :
+#### Connaître répartition de la mémoire disque
 ```Bash
 df -h # calcul de mémoire disque de chaque périphérique -h for human readable in Go
 
@@ -361,7 +366,7 @@ awk '/MATCH1/{flag=1;next}/MATCH2/{flag=0}flag' file
 
 awk '/MATCH1/{a=1}/MATCH2/{print;a=0}a' file
 ```
-#### Transforme une colonne en ligne avec élément séparé par un espace :
+#### Transform a ouptut in column to a unique row with a white space separation
 ```Bash
 awk 'BEGIN { ORS = " " } { print $1 }' filename
 ```
@@ -395,6 +400,13 @@ tar -cvf archive.tar spencel1 fichierarchive2… #créer une archive à partir d
 tar -zcvf archivedossier.tar dossier/ # créer une archive compressée à partir d’un dossier
 tar cvf - path/to/dir/ | pigz > archive.tar.gz # allow to use all cores in the machine to zip and tar
 ```
+
+### Command ls
+#### List all folders in the current directory
+```Bash
+ls -d */
+```
+
 ### Command find
 #### Case sensitive
 ```Bash
@@ -434,6 +446,7 @@ find . -iname "pattern1*" -not -iname "*pattern2*" -delete
 ```Bash
 find /dir/to/search -type f -iname "pattern" -print0 | xargs -I {} -0 grep --color 'word-to-search' "{}"
 ```
+
 ### Command grep
 #### Return lines of a files that (do not) start by ‘ ‘, #, ;
 ```Bash
@@ -455,13 +468,19 @@ Récupérer la première coccurence d’un motif dans un fichier
 ```Bash
 grep -m1 <motif> file
 ```
+
+### Find a filename and the line number where a pattern appears in all directories 
+```Bash
+grep -rnw 'pattern' '/path/to/somewhere/'
+```
+
 ### Command sed
 
 #### Delete the lines lying between PATTERN-1 and PATTERN-2 , excluding the lines containing these patterns (from [here](https://nixtricks.wordpress.com/2013/01/09/sed-delete-the-lines-lying-in-between-two-patterns/))
 ```Bash
 sed '/PATTERN-1/,/PATTERN-2/{//!d}' input.txt
 ```
-#### Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns:
+#### Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns
 ```Bash
 sed '/PATTERN-1/,/PATTERN-2/d' input.txt
 ```
@@ -593,7 +612,7 @@ then
 echo "No argument supplied"
 fi
 ```
-#### Remplacer du texte dan un template avec sed:
+#### Remplacer du texte dan un template avec sed
 ```Bash
 sed -e 's/TEMPLATE/value_of_template/g' input_file.dat > output_file.dat
 ```
@@ -733,7 +752,7 @@ find ./ -type f -exec chmod 600 {} + # autorise rw pour tous les fichiers régul
 
 ## Bash System Settings
 
-### Changer de serveur DNS :
+### Changer de serveur DNS
 ```Bash
 /etc/resolv.conf
 ```
@@ -755,7 +774,7 @@ nameserver 192.168.1.1
 ```
 -> quitter (ctrl X) en enregistrant (O) et lancer scihub sur un navigateur de recherche, normalement la page d’accueil s’affiche !
 
-#### Connaitre la version debian et nom du processeur:
+#### Connaitre la version debian et nom du processeur
 ```Bash
 cat /etc/debian_version #version de debian
 
@@ -766,6 +785,7 @@ cat /etc/issue #autre possibilité pour la version debian
 lsb_release -a #version ubuntu; release
 ```
 
+### Processus
 #### Tuer un processus :
 ```Bash
 top #affiche tous les processus ouverts
@@ -774,8 +794,18 @@ kill SIGNAL PID #ferme le processus en utilisant l’adresse PID (4 chiffres)
 
 killall NOM_DU_PROGRAMME #ferme tous les processus associé au programme utilisé
 ```
+#### Get more info about current processus
+Print architecture and specific outputs with ` -o` 
+```Bash
+ps -efo pid,comm
+``` 
+Catch a specific keyword
+```Bash
+ps -ef pid,comm
+``` 
 
-## Jupyter :
+
+## Jupyter
 
 #### S’identifier en tant qu’administrateur
 ```Bash
@@ -832,7 +862,7 @@ sudo make install
 ```Bash
 sudo ln -sT /opt/nom_sofware/bin/nom_software /usr/local/bin/nom_sofware
 ```
-#### Changer la longueur du nom de chemin du dossier courant:
+#### Changer la longueur du nom de chemin du dossier courant
 ```
 cd ~/ | sudo nano ./basrc #puis changer /W par /w dans la variable SP1
 ```

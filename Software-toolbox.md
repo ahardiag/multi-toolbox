@@ -16,13 +16,13 @@
             - [Preview of the markdown file on the side : CTRL+K V](#preview-of-the-markdown-file-on-the-side--ctrlk-v)
             - [Extensions :](#extensions-)
             - [Image centered with caption :](#image-centered-with-caption-)
+        - [Preview markdown](#preview-markdown)
     - [Tcl-VMD toolbox](#tcl-vmd-toolbox)
             - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
             - [Render a snapshot](#render-a-snapshot)
             - [Operations on list](#operations-on-list)
             - [Wrap a selection](#wrap-a-selection)
             - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
-    - [VSCode](#vscode)
     - [Inkscape](#inkscape)
     - [VPN](#vpn)
             - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
@@ -83,12 +83,15 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 
 ## Markdown (using VS Code)
 
-#### Preview of the markdown file on the side : CTRL+K V
+#### Preview markdown (on the right side)
+After enaling a previewer like Markdown Preview Enhanced
+`CTRL+K` `V`
 
 #### Extensions :
 - **Markdown Preview Enhanced** : preview of markdown
 - **Markdown PDF** : to convert onin pdf format
 - **Auto Markdown TOC** : to create table of Contents
+- **Markdown Table** : to manipulate tables
 
 #### Image centered with caption :
 ```html
@@ -131,9 +134,6 @@ Or
 ` ALT`+`2`
 Or `2` on the Numeric Pad
 The second method allows to pass from one mouse menu to another (`ALT`+`1`, `ALT`+`2`,...)
-## VSCode
-Utiliser un lecteur de markdown : F1 -> markdown preview enhances -> Install
-compiler : CTRL+Shift+V
 
 ## Inkscape
 To add the lateral scroll : CTRL-B
