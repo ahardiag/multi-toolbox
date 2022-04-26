@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Shell Bash toolbox](#shell-bash-toolbox)
+- [CECI EST UN TEST](#ceci-est-un-test)
     - [Jupyter Notebook settings](#jupyter-notebook-settings)
             - [Add the extension for Table of Contents](#add-the-extension-for-table-of-contents)
             - [Run a server independently on the terminal window:](#run-a-server-independently-on-the-terminal-window)
@@ -60,7 +61,7 @@
         - [Command grep](#command-grep)
             - [Return lines of a files that do not start by ‘ ‘, #, ;](#return-lines-of-a-files-that-do-not-start-by----)
             - [Catch several matching term in any order with grep through perl](#catch-several-matching-term-in-any-order-with-grep-through-perl)
-        - [Get the fiile and line number where a pattern appears in all directories](#get-the-fiile-and-line-number-where-a-pattern-appears-in-all-directories)
+            - [Find a filename and the line number where a pattern appears in all directories](#find-a-filename-and-the-line-number-where-a-pattern-appears-in-all-directories)
         - [Command sed](#command-sed)
             - [Delete the lines lying between PATTERN-1 and PATTERN-2 , excluding the lines containing these patterns from here](#delete-the-lines-lying-between-pattern-1-and-pattern-2--excluding-the-lines-containing-these-patterns-from-here)
             - [Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns](#delete-the-lines-lying-between-pattern-1-and-pattern-2--including-the-lines-containing-these-patterns)
@@ -469,7 +470,7 @@ Récupérer la première coccurence d’un motif dans un fichier
 grep -m1 <motif> file
 ```
 
-### Find a filename and the line number where a pattern appears in all directories 
+#### Find a filename and the line number where a pattern appears in all directories 
 ```Bash
 grep -rnw 'pattern' '/path/to/somewhere/'
 ```

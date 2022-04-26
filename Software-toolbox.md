@@ -12,11 +12,12 @@
         - [Repair sqlite](#repair-sqlite)
     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
-    - [Markdown using VS Code](#markdown-using-vs-code)
-            - [Preview of the markdown file on the side : CTRL+K V](#preview-of-the-markdown-file-on-the-side--ctrlk-v)
+    - [VSCode](#vscode)
+        - [Useful extensions](#useful-extensions)
+        - [Markdown](#markdown)
+            - [Preview markdown on the right side](#preview-markdown-on-the-right-side)
             - [Extensions :](#extensions-)
             - [Image centered with caption :](#image-centered-with-caption-)
-        - [Preview markdown](#preview-markdown)
     - [Tcl-VMD toolbox](#tcl-vmd-toolbox)
             - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
             - [Render a snapshot](#render-a-snapshot)
@@ -81,7 +82,13 @@ https://www.zotero.org/utils/dbfix/
 ### Via Google-drive-ocamlfuse
 https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 
-## Markdown (using VS Code)
+## VSCode
+
+### Useful extensions
+- **Dataflex Colorize** : ??? do not know why it is installed
+- **vscode-pdf** : visualize pdf
+
+### Markdown
 
 #### Preview markdown (on the right side)
 After enaling a previewer like Markdown Preview Enhanced
