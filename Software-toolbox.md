@@ -4,6 +4,9 @@
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
     - [NextCloud](#nextcloud)
+    - [Latex](#latex)
+        - [Latex distribution](#latex-distribution)
+        - [On VSCode](#on-vscode)
     - [Github](#github)
         - [Save a token password key](#save-a-token-password-key)
         - [Deposit of a source code on HAL](#deposit-of-a-source-code-on-hal)
@@ -14,6 +17,8 @@
         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
     - [VSCode](#vscode)
         - [Useful extensions](#useful-extensions)
+        - [Shortcuts](#shortcuts)
+            - [Overview of principal keyboard shortcuts :](#overview-of-principal-keyboard-shortcuts-)
         - [Markdown](#markdown)
             - [Preview markdown on the right side](#preview-markdown-on-the-right-side)
             - [Extensions :](#extensions-)
@@ -44,6 +49,16 @@ sudo apt install nextcloud-client nextcloud-client-nautilus
 sudo apt install nextcloud-desktop
 ```
 
+## Latex 
+### Latex distribution
+```Bash
+sudo apt install texlive-full -y # Heavy 5Go
+sudo apt install texlive -y # Lighter 200 Mo
+```
+
+### On VSCode
+Need extension `̀LateX Workshop`
+To build the current project : `CTRL`+ `L` `B` 
 
 ## Github
 
@@ -87,6 +102,17 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 ### Useful extensions
 - **Dataflex Colorize** : ??? do not know why it is installed
 - **vscode-pdf** : visualize pdf
+
+### Shortcuts
+1) File -> Preferences -> Keyboard Shortcuts
+2) Look for a specific command ,e.g. :
+- shortcut to move from editor to terminal: `Focus Terminal`
+my personal choice : `ALT`+ `T` 
+- shortcut to move to first panel editor: `First Editor` 
+my personal choice : `ALT`+ `E` 
+
+#### Overview of principal keyboard shortcuts :
+https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf
 
 ### Markdown
 

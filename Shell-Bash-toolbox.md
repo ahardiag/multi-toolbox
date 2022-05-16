@@ -3,7 +3,6 @@
 <!-- TOC -->
 
 - [Shell Bash toolbox](#shell-bash-toolbox)
-- [CECI EST UN TEST](#ceci-est-un-test)
     - [Jupyter Notebook settings](#jupyter-notebook-settings)
             - [Add the extension for Table of Contents](#add-the-extension-for-table-of-contents)
             - [Run a server independently on the terminal window:](#run-a-server-independently-on-the-terminal-window)
