@@ -3,6 +3,8 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
+    - [Conda](#conda)
+        - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
     - [NextCloud](#nextcloud)
     - [Latex](#latex)
         - [Latex distribution](#latex-distribution)
@@ -26,6 +28,7 @@
     - [Tcl-VMD toolbox](#tcl-vmd-toolbox)
             - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
             - [Render a snapshot](#render-a-snapshot)
+        - [Crop an image](#crop-an-image)
             - [Operations on list](#operations-on-list)
             - [Wrap a selection](#wrap-a-selection)
             - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
@@ -40,6 +43,13 @@
             - [Decrease size of a movie and convert format](#decrease-size-of-a-movie-and-convert-format)
 
 <!-- /TOC -->
+
+## Conda
+
+### Look for a package in all conda environments
+```Bash
+conda search <package> --envs
+```
 
 ## NextCloud
 Works in Ubuntu 18.04 :
@@ -102,6 +112,11 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
 ### Useful extensions
 - **Dataflex Colorize** : ??? do not know why it is installed
 - **vscode-pdf** : visualize pdf
+- **Spell Right** : orthographic corrector
+    To link linux langages dictionaries to VSCODE :
+    ```bash
+    ln -s /usr/share/hunspell/* ~/.config/Code/Dictionaries
+    ```
 
 ### Shortcuts
 1) File -> Preferences -> Keyboard Shortcuts
@@ -146,7 +161,12 @@ convert myfigure.bmp myfigure.png
 ```Tcl
 set filename path_to_file
 render snapshot $filename.tga
-convert $filename.tga $filename.png
+convert $filename.tga $filename.png -quality 10%
+```
+
+### Crop an image
+```Bash
+convert filename.bmp  -crop 1680x1600+380+290 filename.png
 ```
 
 #### Operations on list 
@@ -279,6 +299,15 @@ eyJoaXN0b3J5IjpbLTgwNjE4NTM0Ml19
 ## Movie converter
 
 #### Decrease size of a movie and convert format 
+Reduce duration :
 ```Bash
 ffmpeg -i movie_H01_pure_water_C770.mpg -ss 10 -fs  10000000    movie_H01_pure_water_C770.mp4
 ```
+Change the frame format :
+```Bash
+ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4
+```
+Simple Commands :
+https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
+https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm
+Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options

@@ -8,6 +8,7 @@
             - [Run a server independently on the terminal window:](#run-a-server-independently-on-the-terminal-window)
             - [Delete a server method1:](#delete-a-server-method1)
             - [Delete a server method2:](#delete-a-server-method2)
+            - [Delete a server method3:](#delete-a-server-method3)
     - [BASH Syntax](#bash-syntax)
             - [List last modifications in a file](#list-last-modifications-in-a-file)
             - [Redirect error on output](#redirect-error-on-output)
@@ -23,9 +24,10 @@
             - [Lien symbolique vers .local/bin/](#lien-symbolique-vers-localbin)
             - [Donner la valeur d’une variable d’environnnement](#donner-la-valeur-dune-variable-denvironnnement)
         - [Arguments in bash scripts](#arguments-in-bash-scripts)
+            - [Manual usage](#manual-usage)
             - [Getops simple example](#getops-simple-example)
-            - [Getops example with check validity of the arguments](#getops-example-with-check-validity-of-the-arguments)
-            - [deactivate/Activate wildcard recognition](#deactivateactivate-wildcard-recognition)
+            - [Compulsory arguments](#compulsory-arguments)
+            - [Deactivate/Activate wildcard recognition](#deactivateactivate-wildcard-recognition)
         - [Conditions in bash languages](#conditions-in-bash-languages)
             - [Bash yes/no test](#bash-yesno-test)
             - [exit  from a _while_ loop](#exit--from-a-_while_-loop)
@@ -81,8 +83,13 @@
             - [Insérer ligne après matcher un motif](#ins%C3%A9rer-ligne-apr%C3%A8s-matcher-un-motif)
             - [Insérer ligne avant matcher un motif](#ins%C3%A9rer-ligne-avant-matcher-un-motif)
             - [Replacer toute une line après avoir match un motif](#replacer-toute-une-line-apr%C3%A8s-avoir-match-un-motif)
+        - [Sorting tools](#sorting-tools)
+            - [Sort a list of files depending on a part of the string name](#sort-a-list-of-files-depending-on-a-part-of-the-string-name)
             - [Sort a list of filename in the good order including 1-9 numbers](#sort-a-list-of-filename-in-the-good-order-including-1-9-numbers)
+        - [Other commands](#other-commands)
             - [Récupérer un mot dans une suite de mots](#r%C3%A9cup%C3%A9rer-un-mot-dans-une-suite-de-mots)
+            - [Change a line into a column](#change-a-line-into-a-column)
+            - [Date](#date)
         - [Series of commands](#series-of-commands)
             - [Afficher la ligne d’un fichier en utilisant le numéro de la ligne](#afficher-la-ligne-dun-fichier-en-utilisant-le-num%C3%A9ro-de-la-ligne)
             - [Trouver un programme affiché dans Gnome touche Windows](#trouver-un-programme-affich%C3%A9-dans-gnome-touche-windows)
@@ -108,7 +115,9 @@
             - [Tuer un processus :](#tuer-un-processus-)
             - [Get more info about current processus](#get-more-info-about-current-processus)
     - [Jupyter](#jupyter)
-            - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
+        - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
+        - [Convert a notebook into a python script](#convert-a-notebook-into-a-python-script)
+    - [Others](#others)
             - [Chercher les versions de python installées :](#chercher-les-versions-de-python-install%C3%A9es-)
             - [Instal Latex : debian 7](#instal-latex--debian-7)
             - [Accéder aux infos processeurs](#acc%C3%A9der-aux-infos-processeurs)
@@ -127,6 +136,7 @@
 <!-- /TOC -->
 
 ## Jupyter Notebook settings
+
 #### Add the extension for Table of Contents
 In the base environment of Conda :
 ```Bash
@@ -138,29 +148,41 @@ Once opening a notebook, activate in the menu nbextensions the item called Table
 ```Bash
 nohup jupyter notebook --no-browser --port 9997 & disown
 ```
+
 #### Delete a server (method1):
 ```Bash
 jupyter notebook stop 9997
 ```
+
 #### Delete a server (method2):
 ```Bash
 pgrep jupyter -> get PID  
 kill PID
 ```
+#### Delete a server (method3):
+```Bash
+jupyter notebook list # get the port number
+lsof -n -i4TCP:[port-number] # get the PIDof the server
+kill -9 [PID] # kill the PID and therefore the jupyter server
+```
+
 ## BASH Syntax
 
 #### List last modifications in a file
 ```Bash
 find -printf "%TY-%Tm-%Td %TT %p\n" | sort -n
 ```
-  #### Redirect error on output
+
+#### Redirect error on output
 ```Bash
 ./run.sh >output.log 2>&1
 ```
+
 #### Connaitre le chemin d’accès d’une application exécutable
 ```Bash
 which nom_application
 ```
+
 #### Effacer tous les fichiers du répertoire courant sauf fichier1 et fichier2
 ```Bash
 shopt -s extglob
@@ -174,6 +196,7 @@ cat fichier1
 cat fichier1 fichier2 > fichier3
 cat fichier1 >> fichier 3 (ajoute à la suite dans fichier3 le contenu du fichier1)
 ```
+
 #### Donne des infos sur nombre de lignes, mots et octets d’un fichier
 ```Bash
 wc fichier
@@ -182,10 +205,12 @@ Ex output : 4 5 12 (4 lignes, 5 caractères, 12octets)
 ```Bash
 cat fichier |wc -l (donne le nombre de lignes dans fichier)
 ```
+
 #### Afficher chemin du répertoire courant
 ```Bash
 pwd
 ```
+
 #### Ajouter du texte à la fin d’ un fichier (non) protégé  
 ```Bash
 echo ‘mon_texte’ >> fichier
@@ -196,29 +221,57 @@ printf '%s' "texte a ajouter à la suite de la dernière ligne du fichier” >> 
 printf “energy= %1.3f temperature= %1;4” $ENERGY $TEMP -> renvoie une ligne avec caractères et nombres (f pour float ,1 pour l’espace, .3 pour 3 chiffres après la virgule)*
 echo -n texte_a completer >>fichier.dat -> ecrit dans un fichier et empêche le saut de ligne pour la prochaine entrée
 ```
+
 #### Afficher le chemin d’un fichier  
 ```Bash
 locate -i nom_du_fichier
 Whereis <application> #cherche le chemin d’une application
 ```
+
 #### Connaitre la taille d’un répertoire
 ```Bash
 du -sh /chemin/répertoire
 ```
+
 #### Connaitre la taille des fichiers
 ```Bash
 ls -lsha
 ```
+
 #### Lien symbolique vers .local/bin/
 ```Bash
 ln -s /absolute/path/to/exec/ /absolute/path/to/home/.local/bin/exec_file
 ```
+
 #### Donner la valeur d’une variable d’environnnement
 ```Bash
 echo $Nom_de_la variable
 ```
 
 ### Arguments in bash scripts
+
+#### Manual usage
+```Bash
+target=$1
+usage() {
+    echo "Usage: $0 <fichier>"
+    echo "Compte les lignes d'un fichier"
+    exit
+}
+main() {
+    ls -l $target
+    echo "nombre de lignes : $(wc -l $target)"
+    stat $target
+}
+if [ $# -lt 1 ]; then
+    usage
+elif [ $# -eq 1 ]; then
+    main
+else
+    usage
+fi
+exit
+```
 
 #### Getops simple example
 Invonvenients : it is not able to parse GNU-style long options (```--myoption```) nor XF86-style long options (```-myoption```)
@@ -239,10 +292,15 @@ done
 ```
 
 
-#### Getops example with check validity of the arguments
+#### Compulsory arguments
+```Bash
+if [ -z "$stream" ] || [ -z "$pattern" ]; then
+        print_usage
+        exit 1
+fi
+```
 
-
-#### deactivate/Activate wildcard recognition
+#### Deactivate/Activate wildcard recognition
 ```Bash
 set -f
 set +f
@@ -264,6 +322,7 @@ case $yn in
 esac
 done
 ```
+
 #### exit  from a _while_ loop 
 ```Bash
 while …
@@ -273,6 +332,7 @@ break
 fi
 done
 ```
+
 #### Tester si un fichier,répertoire existe (bash)
 ```Bash
 test -f file.txt
@@ -310,6 +370,7 @@ du -sh /home/directory # calcul de la taille de chaque répertoire dans le chemi
 
 df -dh /home/directory #idem
 ``` 
+
 #### Suppprimer/insérer les lignes d’un fichier
 
 En supprimant par numéro de ligne :
@@ -343,22 +404,26 @@ sed 10q fichier.dat #affiche les 10 premières lignes du fichier
 
 tail -n 100 A.txt >> B.txt #insérer les n dernières lignes du fichier A à la suite du fichier B
 ```
+
 ### Syntax AWK
 
 #### Pass variables to awk
 ```Bash
 echo | awk -v r=$root -v t='truc' 'BEGIN{a=20}{ print "shell variable $root value is " r " and the other value is " t "=" a}'
 ```
+
 #### Get the string between one/two separator with awk
 ```Bash
 awk -F ‘sep1' '{print $2}' <<< mystring
 
 awk -F ‘sep1|sep2' '{print $2}' <<< mystring
 ```
+
 #### Replace one column of a file f1 with the column of another file f2
 ```Bash
 awk 'FNR==NR{a[NR]=$3;next}{$2=a[FNR]}1' f2 f1
 ```
+
 #### Get only the part of a file between two matching term (excluding matching lines and including them)
 ```Bash
 
@@ -366,10 +431,12 @@ awk '/MATCH1/{flag=1;next}/MATCH2/{flag=0}flag' file
 
 awk '/MATCH1/{a=1}/MATCH2/{print;a=0}a' file
 ```
+
 #### Transform a ouptut in column to a unique row with a white space separation
 ```Bash
 awk 'BEGIN { ORS = " " } { print $1 }' filename
 ```
+
 #### Récupère des données utilisant la la ligne,colonne, motif avec awk
 ```Bash
 cat filename| | awk '/MOTIF/ {print $1, $2}'
@@ -383,15 +450,18 @@ cat filename| | awk ' FNR == 5 {print $1, $2}'
 ```Bash
 tar --update -v -f archive.tar dir2archive/subdir
 ```
+
 #### Untar an archive folder in another name
 ```Bash
 mkdir -p archive_new && tar -xvf archive.tar -C archive_new --strip-components=1
 ```
+
 #### Untar only a sub directory of a compressed file (and forget the first two parents)
 
 ```Bash
 tar --strip-components=2 -xfvz archive.tar.gz folder/in/archive
 ```
+
 #### Créer tar/Extraire tar
 ```Bash
 tar xvf mon_archive.tar # dézipper une archive
@@ -402,16 +472,20 @@ tar cvf - path/to/dir/ | pigz > archive.tar.gz # allow to use all cores in the m
 ```
 
 ### Command ls
+
 #### List all folders in the current directory
 ```Bash
 ls -d */
+ls -d */ | grep -v PATTERN # to exclude with a pattern
 ```
 
 ### Command find
+
 #### Case sensitive
 ```Bash
 Find /path/to/search -name “*Keyword*"
 ```
+
 #### Case insensitive
 ```Bash
 Find /path/to/search -iname “*keyword*"
@@ -426,34 +500,41 @@ find ./ -maxdepth 1 -not -name "NOMATCH1” -not -name "NOMATCH2” -name "MATCH
 ```Bash
 find ./ -type f -name "*.txt" -exec sh -c 'grep -EiH something "$1" | grep -E somethingelse | grep -E other' sh {} \;
 ```
+
 #### Return name with relative path wrt mydir with all directories and not tar files
 ```Bash
 find mydir -maxdepth 1 -type f
 ```
+
 #### Find a match pattern and replace next line
 ```Bash
 ​sed -i '/MATCH/{n;s/.*/NEW_NEXT_LINE/}' file
 ```
+
 #### Find a match pattern and replace next string
 ```Bash
 sed -i 's/MATCH [^ ]*/MATCH newString/' file
 ```
+
 #### Remove files with wildcard except another pattern
 ```Bash
 find . -iname "pattern1*" -not -iname "*pattern2*" -delete
 ```
+
 #### Find a file matching pattern and find lines in the file where is located a word-to-search
 ```Bash
 find /dir/to/search -type f -iname "pattern" -print0 | xargs -I {} -0 grep --color 'word-to-search' "{}"
 ```
 
 ### Command grep
+
 #### Return lines of a files that (do not) start by ‘ ‘, #, ;
 ```Bash
 grep "^[#; ]" file
 
 grep "^[^#; ]" file
 ```
+
 #### Catch several matching term in any order with grep (through perl)
 ```Bash
 grep -P '(?=.*?MATCH1)(?=.*?MATCH2)(?=.*?MATCH3)(?=.*MATCH4)^.*$'
@@ -480,35 +561,43 @@ grep -rnw 'pattern' '/path/to/somewhere/'
 ```Bash
 sed '/PATTERN-1/,/PATTERN-2/{//!d}' input.txt
 ```
+
 #### Delete the lines lying between PATTERN-1 and PATTERN-2 , including the lines containing these patterns
 ```Bash
 sed '/PATTERN-1/,/PATTERN-2/d' input.txt
 ```
+
 #### Delete all the lines after PATTERN-2, use this
 ```Bash
 sed '/PATTERN-1/,$d' input.txt
 ```
+
 #### Do sed command (ex add a symbol “_” in the 17th position) only in a range of rows (between line1 and line2)
 ```Bash
 sed -i -E 'line1,line2s/^(.{17}) /\1_/' file
 ```
+
 #### Delete 10 lines after matching a term
 ```Bash
 sed -e '/MATCH/,+10d' file
 ``` 
+
 #### Delete all lines before/after a matching term
 ```Bash
 sed -n '/MATCH/,$p' file
 sed -e '/MATCH/,$d' file
 ```
+
 #### Select lines in a sub-part of a file between two matching terms
 ```Bash
 sed -n '/^pattern1/,${p;/^pattern2/q}' file
 ```
+
 #### Select all lines after a matching terms
 ```Bash
 sed -n '/^pattern/,$p' file
 ```
+
 #### Insert several lines after matching a term in a file
 ```Bash
 sed -i '/MATCH/a \
@@ -516,18 +605,22 @@ Ceci est mon texte\
 En plusieurs lignes \
 ' file
 ```
+
 #### Comment with “;” a line after match one or several term in a line
 ```Bash
 sed -i '/MATCH1.*MATCH2/s/./;&/' file
 ```
+
 #### Insert a character at a given column number in all lines with match (17 in the example)
 ```Bash
 sed -i -E '/MATCH/s/^(.{17}) /\1CHAR/' file
 ```
+
 #### Match a string and do a replacement between two strings in the lines where it matchs
 ```Bash
 sed -i '/MATCH/{ s/string1/string2/g }' file
 ```
+
 #### Sort only a part of a file wrt the 2nd column delimited by two lines using matching terms
 ```Bash
 {
@@ -539,31 +632,47 @@ sed '/^.*MATCH2.*$/,$!d' file
 
 } > new_file
 ``` 
+
 #### Insert the content of a file1 in another file2 before the matching term
 ```Bash
 sed -i '/.*MATCH1.*/e cat file1' file2
 ```
+
 #### Insert the content of a file1 in another file2 after the matching term
 ```Bash
 sed -i '/MATCH/ r file1' file2
 ```
+
 #### Insert the content of a file1 in another file2 at a given line (do not work for line 0)
 ```Bash
 line=2
 sed -e '${line}r file1' file2
 ```
+
 #### Insérer ligne après matcher un motif
 ```Bash
 sed -i '/.*MOTIF.*/a NEWLINE' file
 ```
+
 #### Insérer ligne avant matcher un motif
 ```Bash
 sed -i '/.*MOTIF.*/i NEWLINE' file
 ```
+
 #### Replacer toute une line après avoir match un motif
 ```Bash
 sed -i 's/.*MOTIF.*/WHOLE LINE/' file
 ```
+
+### Sorting tools 
+
+#### Sort a list of files depending on a part of the string name
+Use a delimiter after `-t` and select with `-k` the number nth field to use 
+e.g. `.` as a delimiter and the second field :
+```Bash
+$ ls * | sort -t. -k2
+```
+
 #### Sort a list of filename in the good order including 1-9 numbers
 ```Bash
 ls *1000* | sort --version-sort
@@ -577,6 +686,9 @@ Use the result as input for a command COMMAND :
 ```Bash
 ls -v1 *png | xargs COMMAND
 ```
+
+### Other commands
+
 #### Récupérer un mot dans une suite de mots
 ```Bash
 N=3  
@@ -585,19 +697,34 @@ arr=($STRING)
 echo ${arr[N-1]}
 ```
 
+#### Change a line into a column
+```Bash
+echo $line | tr -s ' '  '\n'
+```
+
+#### Date
+```Bash
+date +%Y-%m-%d-%H:%M
+date +%F
+```
+
 ### Series of commands
+
 #### Afficher la ligne d’un fichier en utilisant le numéro de la ligne
 ```Bash
 sed -n 3p file
 
 awk '{if(NR==3) print $0}' file
 ```
+
 #### Trouver un programme affiché dans Gnome (touche Windows)
 Aller dans usr/share/applications et chercher le fichier <nom_du_programme>.desktop
+
 #### Renommer plusieurs fichiers avec wildcard
 ```Bash
 mmv old_filename\* new_filename\#1
 ```
+
 #### Vérifier si un argument est fourni avec l’executable en bash
 ```Bash
 if [ $# -eq 0 ]
@@ -612,10 +739,12 @@ then
 echo "No argument supplied"
 fi
 ```
+
 #### Remplacer du texte dan un template avec sed
 ```Bash
 sed -e 's/TEMPLATE/value_of_template/g' input_file.dat > output_file.dat
 ```
+
 #### Changer les couleurs par défaut de la commande ls (LS_COLORS variable)
 ```Bash
 dircolors -p > ~/.dircolors # créer un fichier à partie des paramètres par défaut
@@ -638,6 +767,7 @@ eval ( dircolors --c-shell $HOME/.dircolors) #à ajouter dans .config/fish.confi
 ```Bash
 nohup <command> & disown
 ```
+
 ## Tunnel SSH
 
 #### Create a directory through ssh
@@ -660,6 +790,7 @@ echo "$DIR found ."
 exit 1
 fi
 ```
+
 ### Method 1 
 1.  Se connecter sur Etablir un tunnel
 ```Bash
@@ -673,6 +804,7 @@ ssh hardiagon@localhost -p 8000
 ```Bash
 scp -P 8000 hardiagon@localhost:~/test ./
 ```
+
 ### Method 2
 En utilisant le fichier .ssh/config en local (ordi portable)
 
@@ -705,6 +837,7 @@ ssh sage
 ssh telesto
 ```
 (entrer mot de passe machine)
+
 #### Copier via scp et wildcard *
 ```Bash
 scp "telesto:/data/hardiagon/SHC8/memb541/12_channels/data/step7_*.gro" ./
@@ -713,6 +846,7 @@ Ouvrir une connexion ssh en passant une variable d’environnement
 ```Bash
 ssh -t telesto 'export HOME=/home/hardiagon; bash'
 ```
+
 ## Gestion des processus (sur bash shell)
 ```Bash
 nvidia -smi # affiche dans le shell l’état et caractéristiques des cartes nvidia
@@ -723,6 +857,7 @@ top | grep nvidia-smi -m 5 #envoie sur le terminal les caractéristiques d’un 
 
 pid=$(pgrep firefox) #écris la valeur d’un PID du processus firefox dans une variable
 ```
+
 ### Caractéristiques nvidia-smi
 
 -   GPU Volatil
@@ -786,6 +921,7 @@ lsb_release -a #version ubuntu; release
 ```
 
 ### Processus
+
 #### Tuer un processus :
 ```Bash
 top #affiche tous les processus ouverts
@@ -794,6 +930,7 @@ kill SIGNAL PID #ferme le processus en utilisant l’adresse PID (4 chiffres)
 
 killall NOM_DU_PROGRAMME #ferme tous les processus associé au programme utilisé
 ```
+
 #### Get more info about current processus
 Print architecture and specific outputs with ` -o` 
 ```Bash
@@ -807,16 +944,27 @@ ps -ef pid,comm
 
 ## Jupyter
 
-#### S’identifier en tant qu’administrateur
+### S’identifier en tant qu’administrateur
 ```Bash
 jupyter notebook --allow-root
 ```
+
+### Convert a notebook into a python script
+Need module `jupyter_contrib_nbextensions` :
+```Bash
+jupyter nbconvert --to script notebook.ipynb
+```
+
+## Others
+
 #### Chercher les versions de python installées :
 ```Bash
 ls -l /usr/bin/python*
 ```
+
 #### Instal Latex : (debian 7)
 Chercher paquets textlive-full via Synaptic
+
 #### Accéder aux infos processeurs
 ```Bash
 cat /proc/cpuinfo
@@ -828,6 +976,7 @@ cat /proc/cpuinfo|grep -i "^processor" |wc -l (nombre de coeurs)
 ```Bash
 dmidecode --type 17
 ```
+
 #### Donne des infos sur nombre de lignes, mots et octets d’un fichier
 ```Bash
 wc fichier
@@ -843,6 +992,7 @@ cat fichier |wc -l (donne le nombre de lignes dans fichier)
 ```Bash
 pdfunite fichier1.pdf fichier2.pdf pdf_fusionné.pdf
 ```
+
 ### Install Settings
 
 #### Installer un software sur /opt/ (au lieu de ur/local/) (from [here](https://itsfoss.com/install-software-from-source-code/))
@@ -862,15 +1012,19 @@ sudo make install
 ```Bash
 sudo ln -sT /opt/nom_sofware/bin/nom_software /usr/local/bin/nom_sofware
 ```
+
 #### Changer la longueur du nom de chemin du dossier courant
 ```
 cd ~/ | sudo nano ./basrc #puis changer /W par /w dans la variable SP1
 ```
+
 #### Configurer les paramètres d’affichage écran : unity-tweak-tool
+
 #### Connaitre si un paquet est installé :
 ```
 apt-cache policy name_of_package
 ```
+
 #### Chercher dans apt :
 ```
 apt searcch mot-clé
