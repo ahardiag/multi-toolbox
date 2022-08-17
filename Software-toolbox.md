@@ -13,6 +13,8 @@
         - [Save a token password key](#save-a-token-password-key)
         - [Deposit of a source code on HAL](#deposit-of-a-source-code-on-hal)
     - [Zotero](#zotero)
+        - [Commands](#commands)
+            - [Open the preview in Vscode](#open-the-preview-in-vscode)
         - [Backup/Restore Zotero](#backuprestore-zotero)
         - [Repair sqlite](#repair-sqlite)
     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
@@ -91,6 +93,10 @@ https://spdx.org/licenses/
 
 ## Zotero
 
+### Commands
+#### Open the preview in Vscode
+`CTRL K`+`V`
+
 ### Backup/Restore Zotero
 https://aut.ac.nz.libguides.com/zotero/backup
 
@@ -102,10 +108,24 @@ https://www.zotero.org/utils/dbfix/
 - Download the new .sqlite file and replace teh old one in the Zotero folder
 - Restart Zotero
 
+### Syncronize Zotero on a remote folder
+
+- Open Zotero on your local machine
+- In the menu Settings-> Advances, tick the box with personal folder and choose a remote folder.
+e.g., you can use a remote folder previously mouted using sshfs, or a folder hosted on the lab server using Nextcloud
+
+<figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
+
+![Legende](synchro_zotero.png)
+</div><figcaption>Synchronisation of Zotero on a remote folder.</figcaption></figure>
+
+**Warning** : Pay attention on closing Zotero before opening Zotero on another machine, otherwise you may damage the sqlite database file.
+
 ## Google Drive on linux architecture
 
 ### Via Google-drive-ocamlfuse
 https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
+
 
 ## VSCode
 
@@ -117,6 +137,10 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
     ```bash
     ln -s /usr/share/hunspell/* ~/.config/Code/Dictionaries
     ```
+    remarks : Giving too many errors with latex compilation
+- **LTex** : orthiographic corrector for markdown and latex files
+To change the language, go to the settings of the extension
+
 
 ### Shortcuts
 1) File -> Preferences -> Keyboard Shortcuts
