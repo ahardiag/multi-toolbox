@@ -1,0 +1,144 @@
+[1mdiff --git a/Shell-Bash-toolbox.md b/Shell-Bash-toolbox.md[m
+[1mindex b3b6341..5f47e63 100644[m
+[1m--- a/Shell-Bash-toolbox.md[m
+[1m+++ b/Shell-Bash-toolbox.md[m
+[36m@@ -355,7 +355,7 @@[m [mrm [a-h0-6]*.txt #efface tous les fichiers txt commençant par une lettre entre[m
+ [m
+ #### Créer des alias sur shell[m
+ [m
+[31m-Dans .bashrc : `alias funcname “ <command> “`[m
+[32m+[m[32mDans .bashrc : `alias funcname " <command> "`[m
+ In a Fish terminal :[m
+ ```[m
+ alias <funcname> “<command>”[m
+[1mdiff --git a/Software-toolbox.md b/Software-toolbox.md[m
+[1mindex 9eb90fc..295952e 100644[m
+[1m--- a/Software-toolbox.md[m
+[1m+++ b/Software-toolbox.md[m
+[36m@@ -3,11 +3,17 @@[m
+ <!-- TOC -->[m
+ [m
+ - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)[m
+[32m+[m[32m    - [Python Development](#python-development)[m
+[32m+[m[32m        - [Tests](#tests)[m
+     - [Conda](#conda)[m
+         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)[m
+[32m+[m[32m    - [Pip](#pip)[m
+[32m+[m[32m        - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)[m
+[32m+[m[32m        - [uninstall a package](#uninstall-a-package)[m
+     - [NextCloud](#nextcloud)[m
+     - [Latex](#latex)[m
+         - [Latex distribution](#latex-distribution)[m
+[32m+[m[32m        - [Forward/backward previex](#forwardbackward-previex)[m
+         - [On VSCode](#on-vscode)[m
+     - [Github](#github)[m
+         - [Save a token password key](#save-a-token-password-key)[m
+[36m@@ -15,8 +21,10 @@[m
+     - [Zotero](#zotero)[m
+         - [Commands](#commands)[m
+             - [Open the preview in Vscode](#open-the-preview-in-vscode)[m
+[32m+[m[32m        - [Open Zotero with default GTK environment](#open-zotero-with-default-gtk-environment)[m
+         - [Backup/Restore Zotero](#backuprestore-zotero)[m
+         - [Repair sqlite](#repair-sqlite)[m
+[32m+[m[32m        - [Syncronize Zotero on a remote folder](#syncronize-zotero-on-a-remote-folder)[m
+     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)[m
+         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)[m
+     - [VSCode](#vscode)[m
+[36m@@ -43,9 +51,16 @@[m
+             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)[m
+     - [Movie converter](#movie-converter)[m
+             - [Decrease size of a movie and convert format](#decrease-size-of-a-movie-and-convert-format)[m
+[32m+[m[32m    - [General Linux](#general-linux)[m
+[32m+[m[32m        - [Update search using the KDE research](#update-search-using-the-kde-research)[m
+ [m
+ <!-- /TOC -->[m
+ [m
+[32m+[m[32m## Python Development[m
+[32m+[m
+[32m+[m[32m### Tests[m
+[32m+[m[32mhttps://py-pkgs.org/03-how-to-package-a-python#writing-tests[m
+[32m+[m
+ ## Conda[m
+ [m
+ ### Look for a package in all conda environments[m
+[36m@@ -53,6 +68,21 @@[m
+ conda search <package> --envs[m
+ ```[m
+ [m
+[32m+[m[32m## Pip[m
+[32m+[m
+[32m+[m[32m### Install/Uninstall a package from source using `setup.py` and `distutils`[m
+[32m+[m
+[32m+[m[32mGo to the subdirectory where the package directory is and :[m
+[32m+[m[32m```Bash[m
+[32m+[m[32mpip install ./directory_source[m
+[32m+[m[32mpip uninstall ./directory_source[m[41m [m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### uninstall a package[m[41m [m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m
+ ## NextCloud[m
+ Works in Ubuntu 18.04 :[m
+ ```Bash[m
+[36m@@ -62,14 +92,19 @@[m [msudo apt install nextcloud-desktop[m
+ ```[m
+ [m
+ ## Latex [m
+[32m+[m
+ ### Latex distribution[m
+ ```Bash[m
+ sudo apt install texlive-full -y # Heavy 5Go[m
+ sudo apt install texlive -y # Lighter 200 Mo[m
+ ```[m
+ [m
+[32m+[m[32m### Forward/backward previex[m
+[32m+[m[32mtex to pdf : `CTRL`+`ALT`+`J`[m[41m [m
+[32m+[m[32mpdf to tex : `CTLR`+`click left`[m[41m [m
+[32m+[m
+ ### On VSCode[m
+[31m-Need extension `̀LateX Workshop`[m
+[32m+[m[32mNeed extension `LateX Workshop`[m
+ To build the current project : `CTRL`+ `L` `B` [m
+ [m
+ ## Github[m
+[36m@@ -94,11 +129,23 @@[m [mhttps://spdx.org/licenses/[m
+ ## Zotero[m
+ [m
+ ### Commands[m
+[32m+[m
+ #### Open the preview in Vscode[m
+ `CTRL K`+`V`[m
+ [m
+[32m+[m[32m### Open Zotero with default GTK environment[m
+[32m+[m[32m**Command-line**[m
+[32m+[m[32m```bash[m
+[32m+[m[32mGTK_THEME=Default zotero[m
+[32m+[m[32m```[m
+[32m+[m[32m**Running Zotero by the App launcher** : add a line in ~/.locall/bin/zotero before calling `zotero-bin`[m
+[32m+[m[32m```bash[m
+[32m+[m[32mexport GTK_THEME=Default[m
+[32m+[m[32m```[m
+[32m+[m
+ ### Backup/Restore Zotero[m
+ https://aut.ac.nz.libguides.com/zotero/backup[m
+[32m+[m[32msudo updatedb[m
+ [m
+ ### Repair sqlite[m
+ https://www.zotero.org/utils/dbfix/[m
+[36m@@ -334,4 +381,11 @@[m [mffmpeg -i input.mp4 -vf scale=1280:720 output.mp4[m
+ Simple Commands :[m
+ https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats[m
+ https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm[m
+[31m-Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options[m
+\ No newline at end of file[m
+[32m+[m[32mDocumentation : https://ffmpeg.org/ffmpeg.html#Audio-Options[m
+[32m+[m
+[32m+[m[32m## General Linux[m
+[32m+[m
+[32m+[m[32m### Update search using the KDE research[m
+[32m+[m[32m```bash[m
+[32m+[m[32msudo updatedb[m
+[32m+[m[32m```[m

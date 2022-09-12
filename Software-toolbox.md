@@ -3,11 +3,17 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
+    - [Python Development](#python-development)
+        - [Tests](#tests)
     - [Conda](#conda)
         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
+    - [Pip](#pip)
+        - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
+        - [uninstall a package](#uninstall-a-package)
     - [NextCloud](#nextcloud)
     - [Latex](#latex)
         - [Latex distribution](#latex-distribution)
+        - [Forward/backward previex](#forwardbackward-previex)
         - [On VSCode](#on-vscode)
     - [Github](#github)
         - [Save a token password key](#save-a-token-password-key)
@@ -15,8 +21,10 @@
     - [Zotero](#zotero)
         - [Commands](#commands)
             - [Open the preview in Vscode](#open-the-preview-in-vscode)
+        - [Open Zotero with default GTK environment](#open-zotero-with-default-gtk-environment)
         - [Backup/Restore Zotero](#backuprestore-zotero)
         - [Repair sqlite](#repair-sqlite)
+        - [Syncronize Zotero on a remote folder](#syncronize-zotero-on-a-remote-folder)
     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
     - [VSCode](#vscode)
@@ -29,6 +37,7 @@
             - [Image centered with caption :](#image-centered-with-caption-)
     - [Tcl-VMD toolbox](#tcl-vmd-toolbox)
             - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
+            - [Render with tachyon and transparency](#render-with-tachyon-and-transparency)
             - [Render a snapshot](#render-a-snapshot)
         - [Crop an image](#crop-an-image)
             - [Operations on list](#operations-on-list)
@@ -43,8 +52,15 @@
             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
     - [Movie converter](#movie-converter)
             - [Decrease size of a movie and convert format](#decrease-size-of-a-movie-and-convert-format)
+    - [General Linux](#general-linux)
+        - [Update search using the KDE research](#update-search-using-the-kde-research)
 
 <!-- /TOC -->
+
+## Python Development
+
+### Tests
+https://py-pkgs.org/03-how-to-package-a-python#writing-tests
 
 ## Conda
 
@@ -52,6 +68,21 @@
 ```Bash
 conda search <package> --envs
 ```
+
+## Pip
+
+### Install/Uninstall a package from source using `setup.py` and `distutils`
+
+Go to the subdirectory where the package directory is and :
+```Bash
+pip install ./directory_source
+pip uninstall ./directory_source 
+```
+
+### uninstall a package 
+
+
+
 
 ## NextCloud
 Works in Ubuntu 18.04 :
@@ -62,14 +93,19 @@ sudo apt install nextcloud-desktop
 ```
 
 ## Latex 
+
 ### Latex distribution
 ```Bash
 sudo apt install texlive-full -y # Heavy 5Go
 sudo apt install texlive -y # Lighter 200 Mo
 ```
 
+### Forward/backward previex
+tex to pdf : `CTRL`+`ALT`+`J` 
+pdf to tex : `CTLR`+`click left` 
+
 ### On VSCode
-Need extension `̀LateX Workshop`
+Need extension `LateX Workshop`
 To build the current project : `CTRL`+ `L` `B` 
 
 ## Github
@@ -94,11 +130,23 @@ https://spdx.org/licenses/
 ## Zotero
 
 ### Commands
+
 #### Open the preview in Vscode
 `CTRL K`+`V`
 
+### Open Zotero with default GTK environment
+**Command-line**
+```bash
+GTK_THEME=Default zotero
+```
+**Running Zotero by the App launcher** : add a line in ~/.locall/bin/zotero before calling `zotero-bin`
+```bash
+export GTK_THEME=Default
+```
+
 ### Backup/Restore Zotero
 https://aut.ac.nz.libguides.com/zotero/backup
+sudo updatedb
 
 ### Repair sqlite
 https://www.zotero.org/utils/dbfix/
@@ -180,6 +228,13 @@ After enaling a previewer like Markdown Preview Enhanced
 render Tachyon myfigure  "/usr/local/lib/vmd/tachyon_LINUXAMD64" -aasamples 12 %s -format BMP -res 2400 2146 -o %s.bmp
 convert myfigure.bmp myfigure.png
 ```
+
+#### Render with tachyon and transparency
+```Tcl
+render Tachyon myfigure  "/usr/local/lib/vmd/tachyon_LINUXAMD64" -aasamples 12 %s -format BMP -res 2400 2146 -o %s.bmp -trans_max_surfaces 1
+convert myfigure.bmp myfigure.png
+```
+
 
 #### Render a snapshot
 ```Tcl
@@ -335,3 +390,10 @@ Simple Commands :
 https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
 https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm
 Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options
+
+## General Linux
+
+### Update search using the KDE research
+```bash
+sudo updatedb
+```

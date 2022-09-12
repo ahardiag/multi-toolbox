@@ -355,7 +355,7 @@ rm [a-h0-6]*.txt #efface tous les fichiers txt commençant par une lettre entre 
 
 #### Créer des alias sur shell
 
-Dans .bashrc : `alias funcname “ <command> “`
+Dans .bashrc : `alias funcname " <command> "`
 In a Fish terminal :
 ```
 alias <funcname> “<command>”
