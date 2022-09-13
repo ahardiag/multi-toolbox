@@ -40,7 +40,8 @@
             - [Pass variables to awk](#pass-variables-to-awk)
             - [Get the string between one/two separator with awk](#get-the-string-between-onetwo-separator-with-awk)
             - [Replace one column of a file f1 with the column of another file f2](#replace-one-column-of-a-file-f1-with-the-column-of-another-file-f2)
-            - [Get only the part of a file between two matching term excluding matching lines and including them](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
+            - [Get only the part of a file between two matching te
+            rm excluding matching lines and including them](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
             - [Transform a ouptut in column to a unique row with a white space separation](#transform-a-ouptut-in-column-to-a-unique-row-with-a-white-space-separation)
             - [Récupère des données utilisant la la ligne,colonne, motif avec awk](#r%C3%A9cup%C3%A8re-des-donn%C3%A9es-utilisant-la-la-lignecolonne-motif-avec-awk)
         - [Backup and tarball files](#backup-and-tarball-files)
@@ -159,6 +160,7 @@ jupyter notebook stop 9997
 pgrep jupyter -> get PID  
 kill PID
 ```
+
 #### Delete a server (method3):
 ```Bash
 jupyter notebook list # get the port number
@@ -686,6 +688,14 @@ Use the result as input for a command COMMAND :
 ```Bash
 ls -v1 *png | xargs COMMAND
 ```
+
+### Command convert
+
+#### Reduce teh size of an image
+```Bash
+convert old.png -resize 50%  new.png
+```
+
 
 ### Other commands
 

@@ -37,7 +37,8 @@
             - [Image centered with caption :](#image-centered-with-caption-)
     - [Tcl-VMD toolbox](#tcl-vmd-toolbox)
             - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
-            - [Render with tachyon and transparency](#render-with-tachyon-and-transparency)
+            - [Render with tachyon and transparency and smaller size](#render-with-tachyon-and-transparency-and-smaller-size)
+        - [Turorials](#turorials)
             - [Render a snapshot](#render-a-snapshot)
         - [Crop an image](#crop-an-image)
             - [Operations on list](#operations-on-list)
@@ -229,12 +230,14 @@ render Tachyon myfigure  "/usr/local/lib/vmd/tachyon_LINUXAMD64" -aasamples 12 %
 convert myfigure.bmp myfigure.png
 ```
 
-#### Render with tachyon and transparency
+#### Render with tachyon and transparency and smaller size
 ```Tcl
 render Tachyon myfigure  "/usr/local/lib/vmd/tachyon_LINUXAMD64" -aasamples 12 %s -format BMP -res 2400 2146 -o %s.bmp -trans_max_surfaces 1
-convert myfigure.bmp myfigure.png
+convert myfigure.bmp -resize 50% myfigure.png
 ```
 
+### Turorials
+https://skblnw.github.io/mkvmd_render/
 
 #### Render a snapshot
 ```Tcl
@@ -391,9 +394,15 @@ https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
 https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm
 Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options
 
-## General Linux
+## Other linux commands
 
 ### Update search using the KDE research
 ```bash
 sudo updatedb
 ```
+
+### Open the current path with the file explorer
+```bash
+xdg-open . 
+```
+
