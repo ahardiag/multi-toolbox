@@ -58,6 +58,48 @@
 
 <!-- /TOC -->
 
+## Gromacs
+#### Compile Gromacs with X-Window (`gmx view`), GPU CUDA support 
+https://manual.gromacs.org/documentation/current/install-guide/index.html
+
+```Bash
+tar xfz gromacs-2022.3.tar.gz
+cd gromacs-2022.3
+mkdir build
+cd build
+cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_X11=on -DCMAKE_INSTALL_PREFIX=/opt/gromacs-2022/
+make
+make check
+sudo make install
+source /opt/gromacs/bin/GMXRC
+```
+### Change gromacs version in a fish shell
+https://gist.github.com/pjohansson
+```Bash
+cd /path/to/gromacs
+sudo wget "https://gist.githubusercontent.com/pjohansson/7a86da349161595bd4c1fa77c11be38e/raw/5e9b22b225e079e56284217c1f9dde87f4abc043/GMXRC.fish"
+cd
+source /path/to/gromacs/bin/GMXRC.fish
+```
+
+### Use a handmade script `~/.local/bin/source_gmx` to source files in different location (in a fish shell)
+
+In a config file `~/source_gmxrc`, put all the paths where different gromacs version are installed as the following :
+```Bash
+# version_name path
+2019.2 /path/to/gromacs-2019.2
+...
+```
+Create a fish alias 
+```Bash
+alias source_gmx='bass source source_gmx'
+funcsave source_gmx
+```
+Example of use : 
+```Bash
+source_gmx -f 2019.2
+```
+
 ## Python Development
 
 ### Tests
@@ -238,7 +280,7 @@ convert myfigure.bmp -resize 50% myfigure.png
 
 ### Turorials
 https://skblnw.github.io/mkvmd_render/
-
+kv
 #### Render a snapshot
 ```Tcl
 set filename path_to_file

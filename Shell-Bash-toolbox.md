@@ -40,8 +40,7 @@
             - [Pass variables to awk](#pass-variables-to-awk)
             - [Get the string between one/two separator with awk](#get-the-string-between-onetwo-separator-with-awk)
             - [Replace one column of a file f1 with the column of another file f2](#replace-one-column-of-a-file-f1-with-the-column-of-another-file-f2)
-            - [Get only the part of a file between two matching te
-            rm excluding matching lines and including them](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
+            - [Get only the part of a file between two matching term excluding matching lines and including them](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
             - [Transform a ouptut in column to a unique row with a white space separation](#transform-a-ouptut-in-column-to-a-unique-row-with-a-white-space-separation)
             - [Récupère des données utilisant la la ligne,colonne, motif avec awk](#r%C3%A9cup%C3%A8re-des-donn%C3%A9es-utilisant-la-la-lignecolonne-motif-avec-awk)
         - [Backup and tarball files](#backup-and-tarball-files)
@@ -87,6 +86,8 @@
         - [Sorting tools](#sorting-tools)
             - [Sort a list of files depending on a part of the string name](#sort-a-list-of-files-depending-on-a-part-of-the-string-name)
             - [Sort a list of filename in the good order including 1-9 numbers](#sort-a-list-of-filename-in-the-good-order-including-1-9-numbers)
+        - [Command convert](#command-convert)
+            - [Reduce teh size of an image](#reduce-teh-size-of-an-image)
         - [Other commands](#other-commands)
             - [Récupérer un mot dans une suite de mots](#r%C3%A9cup%C3%A9rer-un-mot-dans-une-suite-de-mots)
             - [Change a line into a column](#change-a-line-into-a-column)
@@ -98,6 +99,7 @@
             - [Vérifier si un argument est fourni avec l’executable en bash](#v%C3%A9rifier-si-un-argument-est-fourni-avec-lexecutable-en-bash)
             - [Remplacer du texte dan un template avec sed](#remplacer-du-texte-dan-un-template-avec-sed)
             - [Changer les couleurs par défaut de la commande ls LS_COLORS variable](#changer-les-couleurs-par-d%C3%A9faut-de-la-commande-ls-ls_colors-variable)
+            - [Eviter les avertissements Warning avec GTK sur un terminal](#eviter-les-avertissements-warning-avec-gtk-sur-un-terminal)
             - [Lancer un processus en arrière-plan sans tuer le processus en quittant le terminal](#lancer-un-processus-en-arri%C3%A8re-plan-sans-tuer-le-processus-en-quittant-le-terminal)
     - [Tunnel SSH](#tunnel-ssh)
             - [Create a directory through ssh](#create-a-directory-through-ssh)
@@ -359,8 +361,8 @@ rm [a-h0-6]*.txt #efface tous les fichiers txt commençant par une lettre entre 
 
 Dans .bashrc : `alias funcname " <command> "`
 In a Fish terminal :
-```
-alias <funcname> “<command>”
+```Bash
+alias <funcname>=“<command>”
 funcsave <funcname>
 ```
 
@@ -772,6 +774,13 @@ dircolors -b ~/.dircolors # applique les changements sur la variable LS_COLORS
 ```Bash
 eval ( dircolors --c-shell $HOME/.dircolors) #à ajouter dans .config/fish.config.fish pour appliquer les changements dans le terminal fish
 ```
+
+#### Eviter les avertissements Warning avec GTK sur un terminal
+Dans le .bashrc ou ~/.config/fish/config.fish:
+```Bash
+export NO_AT_BRIDGE=1 
+```
+
 
 #### Lancer un processus en arrière-plan sans tuer le processus en quittant le terminal
 ```Bash
