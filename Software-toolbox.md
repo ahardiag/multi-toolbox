@@ -332,14 +332,18 @@ sudo mv /etc/resolv.conf{,.orig}
 sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 ```
 Puis ajouter manuellement les DNS de google sur la connection (filiaire ou wifi) sur le GUI NetworkManager Paramètre-> Réseau->roue dentée):
+
 <figure align="center"><div style="text-align:center; width:500px;margin: 0 auto">
 
 ![Legende](vpn1.png)
 </div><figcaption>Figure 11 </figcaption></figure>
+
+
 ```Bash
 sudo nmcli networking off
 sudo nmcli networking on
 ```
+
 Activer le VPN dans le GUI NetworkManager (sur gnome seulement), puis aller chercher le nom de la connexion à travers VPN, généralement tun0
 ```Bash
 nmcli connection show
@@ -357,6 +361,7 @@ nmcli connection show
 nmcli connection modify <nom de connexion> ipv4.never-default true
 ```
 Activer manuellement le VPN dans le menu en haut à droite, éventuellement en donnant le mot de passe 
+
 <figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
 
 ![Legende](vpn2.png)
