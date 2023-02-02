@@ -3,14 +3,25 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
+    - [Gromacs](#gromacs)
+            - [Compile Gromacs with X-Window gmx view, GPU CUDA support](#compile-gromacs-with-x-window-gmx-view-gpu-cuda-support)
+        - [Change gromacs version in a fish shell](#change-gromacs-version-in-a-fish-shell)
+        - [Use a handmade script ~/.local/bin/source_gmx to source files in different location in a fish shell](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shell)
     - [Python Development](#python-development)
         - [Tests](#tests)
     - [Conda](#conda)
         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
-        - [uninstall a package](#uninstall-a-package)
+    - [Keypass](#keypass)
+        - [Download linux clients](#download-linux-clients)
+            - [Convert firefox passwords to CSV](#convert-firefox-passwords-to-csv)
+        - [Use auto-type to fill automatically fields when signing in from a web page](#use-auto-type-to-fill-automatically-fields-when-signing-in-from-a-web-page)
+            - [Add urls in wab page titles](#add-urls-in-wab-page-titles)
     - [NextCloud](#nextcloud)
+        - [Install Nextcloud using apt and PPA sources](#install-nextcloud-using-apt-and-ppa-sources)
+        - [Uninstall all nextcloud packages and dependencies](#uninstall-all-nextcloud-packages-and-dependencies)
+        - [Using snap](#using-snap)
     - [Latex](#latex)
         - [Latex distribution](#latex-distribution)
         - [Forward/backward previex](#forwardbackward-previex)
@@ -52,9 +63,10 @@
             - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
     - [Movie converter](#movie-converter)
-            - [Decrease size of a movie and convert format](#decrease-size-of-a-movie-and-convert-format)
-    - [General Linux](#general-linux)
+            - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
+    - [Other linux commands](#other-linux-commands)
         - [Update search using the KDE research](#update-search-using-the-kde-research)
+        - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
 
 <!-- /TOC -->
 
@@ -122,10 +134,26 @@ pip install ./directory_source
 pip uninstall ./directory_source 
 ```
 
-### uninstall a package 
+## Keypass
+Allow to store passwords in an encryted database, than can be synchronized or use directly from a Web browser.
 
+### Download linux clients
+sudo apt install keepass2 keepassx xdotool
 
+#### Convert firefox passwords to CSV
+Download executable from https://github.com/kspearrin/ff-password-exporter and run it in command line, then export the passwords in a CSV file using columns : title, username, password.
 
+### Use auto-type to fill automatically fields when signing in from a web page
+
+Add a keyboard `CTRL`+`ALT`+`A` shortcut using the command :
+
+```Bash
+mono /usr/lib/keepass2/KeePass.exe --auto-type
+```
+When we use the shortcut from a web browser, it looks for the title of the page and try to match with the title entries of the keypass database. Since it is more convenient to convert URL than title, one can add in the html page the url n the title, as described above.
+
+#### Add urls in web page titles
+Download the extension for firefox : https://github.com/erichgoldman/add-url-to-window-title
 
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
