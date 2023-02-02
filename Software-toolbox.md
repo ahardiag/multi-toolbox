@@ -128,12 +128,57 @@ pip uninstall ./directory_source
 
 
 ## NextCloud
-Works in Ubuntu 18.04 :
+Tested on Ubuntu 18.04, January 9th 2023:
+Sources : https://doc.ubuntu-fr.org/nextcloud-client
+### Install Nextcloud using apt and PPA sources
 ```Bash
 sudo add-apt-repository ppa:nextcloud-devs/client
 sudo apt install nextcloud-client nextcloud-client-nautilus
 sudo apt install nextcloud-desktop
 ```
+Open the nexcloud client, and use the following server to log in: `https://nextcloud.galaxy.ibpc.fr`
+An authentification page will open in your default brower to finish the client installation.
+
+
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](nextcloud_pictures/1.png)
+</div></<figcaption></figcaption></figure>
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](nextcloud_pictures/2.png)
+</div></<figcaption></figcaption></figure>
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](nextcloud_pictures/3.png)
+</div></<figcaption></figcaption></figure>
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](nextcloud_pictures/4.png)
+</div></<figcaption></figcaption></figure>
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](nextcloud_pictures/5.png)
+</div></<figcaption></figcaption></figure>
+
+
+
+### Uninstall all nextcloud packages and dependencies
+```Bash
+sudo apt purge nextcloud-client nextcloud-client-nautilus nextcloud-desktop
+sudo apt --purge autoremove nextcloud-client nextcloud-client-nautilus nextcloud-desktop
+```
+
+### Using snap
+```Bash
+sudo snap install nextcloud-desktop-client
+```
+It does not work properly in ibpc workstation. When launching nextcloud client, there is a issue with the home out of home directory.
 
 ## Latex 
 
@@ -427,15 +472,48 @@ eyJoaXN0b3J5IjpbLTgwNjE4NTM0Ml19
 
 ## Movie converter
 
-#### Decrease size of a movie and convert format 
+#### Decrease size of a movie and convert formats
+
+Show features of the movie :
+```Bash
+ffmpeg -i input.mpg 
+```
+
+Decrease size by changing video format:
+```Bash
+ffmpeg -i input.mp4 -vcodec libx265 -crf 28 output.mp4
+```
+The compression level is controlled by the `crf` value (between 24 to 30)
+ https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg
+
 Reduce duration :
 ```Bash
 ffmpeg -i movie_H01_pure_water_C770.mpg -ss 10 -fs  10000000    movie_H01_pure_water_C770.mp4
 ```
-Change the frame format :
+Change the quality :
 ```Bash
 ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4
 ```
+
+Quality formats : 
+1440p | 2 560:1 440.
+1080p | 1 920:1 080.
+720p  |  1 280:720.
+480p  |    854:480.
+360p  |    640:360.
+240p  |    426:240.
+
+
+Convert to gif :
+```Bash
+ffmpeg -i input.mpg -ss 00:00:05 -fs 5000000 -r 5  output.gif
+```
+
+`-ss` : time offset 
+`-fs` : limit size for the file in bytes
+`-r`  : frame rate for output (frames per second)
+
+
 Simple Commands :
 https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
 https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm

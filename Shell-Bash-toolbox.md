@@ -47,6 +47,7 @@
             - [Updating a existing tar file by adding/updating a subdirectory; create the archive it if not exist](#updating-a-existing-tar-file-by-addingupdating-a-subdirectory-create-the-archive-it-if-not-exist)
             - [Untar an archive folder in another name](#untar-an-archive-folder-in-another-name)
             - [Untar only a sub directory of a compressed file and forget the first two parents](#untar-only-a-sub-directory-of-a-compressed-file-and-forget-the-first-two-parents)
+            - [Untar by excluding files](#untar-by-excluding-files)
             - [Créer tar/Extraire tar](#cr%C3%A9er-tarextraire-tar)
         - [Command ls](#command-ls)
             - [List all folders in the current directory](#list-all-folders-in-the-current-directory)
@@ -58,6 +59,7 @@
             - [Find a match pattern and replace next line](#find-a-match-pattern-and-replace-next-line)
             - [Find a match pattern and replace next string](#find-a-match-pattern-and-replace-next-string)
             - [Remove files with wildcard except another pattern](#remove-files-with-wildcard-except-another-pattern)
+            - [Find a file with a pattern on the filename and a word to search in the file](#find-a-file-with-a-pattern-on-the-filename-and-a-word-to-search-in-the-file)
             - [Find a file matching pattern and find lines in the file where is located a word-to-search](#find-a-file-matching-pattern-and-find-lines-in-the-file-where-is-located-a-word-to-search)
         - [Command grep](#command-grep)
             - [Return lines of a files that do not start by ‘ ‘, #, ;](#return-lines-of-a-files-that-do-not-start-by----)
@@ -87,7 +89,7 @@
             - [Sort a list of files depending on a part of the string name](#sort-a-list-of-files-depending-on-a-part-of-the-string-name)
             - [Sort a list of filename in the good order including 1-9 numbers](#sort-a-list-of-filename-in-the-good-order-including-1-9-numbers)
         - [Command convert](#command-convert)
-            - [Reduce teh size of an image](#reduce-teh-size-of-an-image)
+            - [Reduce the size of an image](#reduce-the-size-of-an-image)
         - [Other commands](#other-commands)
             - [Récupérer un mot dans une suite de mots](#r%C3%A9cup%C3%A9rer-un-mot-dans-une-suite-de-mots)
             - [Change a line into a column](#change-a-line-into-a-column)
@@ -465,6 +467,11 @@ mkdir -p archive_new && tar -xvf archive.tar -C archive_new --strip-components=1
 ```Bash
 tar --strip-components=2 -xfvz archive.tar.gz folder/in/archive
 ```
+#### Untar by excluding files
+Remark : it takes still some time since it reads the disk sequentially.
+```Bash
+tar -zvxf tarball.tar.gz --exclude='*.xtc' --exclude='*.trr'
+```
 
 #### Créer tar/Extraire tar
 ```Bash
@@ -525,8 +532,15 @@ sed -i 's/MATCH [^ ]*/MATCH newString/' file
 find . -iname "pattern1*" -not -iname "*pattern2*" -delete
 ```
 
+#### Find a file with a pattern on the filename and a word to search in the file
+
+```Bash
+find /dir/to/search -type f -iname "pattern" -print0 | xargs -0 grep --color 'word-to-search' "{}"
+```
+
 #### Find a file matching pattern and find lines in the file where is located a word-to-search
 ```Bash
+find . -type f -name "*.txt" -exec grep -H --color "word" {} \;
 find /dir/to/search -type f -iname "pattern" -print0 | xargs -I {} -0 grep --color 'word-to-search' "{}"
 ```
 
@@ -693,7 +707,7 @@ ls -v1 *png | xargs COMMAND
 
 ### Command convert
 
-#### Reduce teh size of an image
+#### Reduce the size of an image
 ```Bash
 convert old.png -resize 50%  new.png
 ```
