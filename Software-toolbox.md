@@ -11,13 +11,20 @@
         - [Tests](#tests)
     - [Conda](#conda)
         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
+        - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
-    - [Keypass](#keypass)
-        - [Download linux clients](#download-linux-clients)
-            - [Convert firefox passwords to CSV](#convert-firefox-passwords-to-csv)
+    - [Keepass](#keepass)
+        - [Download linux client](#download-linux-client)
+        - [Get passwords saved in a web browser](#get-passwords-saved-in-a-web-browser)
         - [Use auto-type to fill automatically fields when signing in from a web page](#use-auto-type-to-fill-automatically-fields-when-signing-in-from-a-web-page)
-            - [Add urls in wab page titles](#add-urls-in-wab-page-titles)
+        - [Add urls in web page titles](#add-urls-in-web-page-titles)
+        - [Auto-typing format](#auto-typing-format)
+    - [KeepassXC other method](#keepassxc-other-method)
+        - [Install](#install)
+        - [Autofill](#autofill)
+    - [Keepass on Android](#keepass-on-android)
+    - [Searching to an entry in a web browser on Android](#searching-to-an-entry-in-a-web-browser-on-android)
     - [NextCloud](#nextcloud)
         - [Install Nextcloud using apt and PPA sources](#install-nextcloud-using-apt-and-ppa-sources)
         - [Uninstall all nextcloud packages and dependencies](#uninstall-all-nextcloud-packages-and-dependencies)
@@ -64,6 +71,9 @@
             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
     - [Movie converter](#movie-converter)
             - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
+    - [Vim](#vim)
+        - [Crypt a file low level of encryption:](#crypt-a-file-low-level-of-encryption)
+        - [Compare files through ssh](#compare-files-through-ssh)
     - [Other linux commands](#other-linux-commands)
         - [Update search using the KDE research](#update-search-using-the-kde-research)
         - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
@@ -124,6 +134,19 @@ https://py-pkgs.org/03-how-to-package-a-python#writing-tests
 conda search <package> --envs
 ```
 
+### Install an environment out of the default folder
+Sometimes, it is not convenient to install an environment in the default folder because you might not have enough disk space (in `/home`, in general), or you want to istall in a local folder for the self-consistency of the folder of the project.
+
+```bash
+conda create -y python mdanalysis -c conda-forge --prefix $WORK/.conda/envs/make_ndx
+```
+Then, you need to activate the environment using the path wherre it is :
+```bash
+conda activate $WORK/.conda/envs/make_ndx
+```
+
+
+
 ## Pip
 
 ### Install/Uninstall a package from source using `setup.py` and `distutils`
@@ -134,14 +157,30 @@ pip install ./directory_source
 pip uninstall ./directory_source 
 ```
 
-## Keypass
-Allow to store passwords in an encryted database, than can be synchronized or use directly from a Web browser.
+## Keepass
+Store and manage passwords in an encryted database for a safer use.
+The database can be synchronized in a server (Nextcloud, Dropbox, ...) and can be accessed through a unique master password in all your devices (PC, Mac, Android). A keyboard shortcut allows to fill automatically the fields required to log in a web page.
+This is a good secure solution against bad practices like saving passwords in a browser. Once setting up the method, do not forget to unset the feature "Remember Password" in the settings of your web browser !
 
-### Download linux clients
-sudo apt install keepass2 keepassx xdotool
+### Download linux client
+```Bash
+sudo apt install keepass2 xdotool
+```
 
-#### Convert firefox passwords to CSV
+### Get passwords saved in a web browser
+
+There is several ways to save the passwords in CSV file, depending on the web browser you use.
+
+On Google Chrome : 
+In the URL bar, search for setting `chrome://settings/passwords` and click on "export passwords". It will save a CSV file that one can modify afterwards.
+
+**BE CAREFUL TO DELETE COMPLETELY THE CSV FILE AFTER USING IT !**
+
+Example for firefox :
+
 Download executable from https://github.com/kspearrin/ff-password-exporter and run it in command line, then export the passwords in a CSV file using columns : title, username, password.
+
+This example shows that it is very easy for a hacker that have accessed to your machine to get all your saved passwords using a few command lines !
 
 ### Use auto-type to fill automatically fields when signing in from a web page
 
@@ -150,10 +189,79 @@ Add a keyboard `CTRL`+`ALT`+`A` shortcut using the command :
 ```Bash
 mono /usr/lib/keepass2/KeePass.exe --auto-type
 ```
-When we use the shortcut from a web browser, it looks for the title of the page and try to match with the title entries of the keypass database. Since it is more convenient to convert URL than title, one can add in the html page the url n the title, as described above.
+When we use the shortcut from a web browser, it looks for the title of the page and try to match with the title entries of the keepass database. Since it is more convenient to convert URL than title, one can add in the html page the url in the title, as described above.
 
-#### Add urls in web page titles
+### Add urls in web page titles
+
 Download the extension for firefox : https://github.com/erichgoldman/add-url-to-window-title
+
+If you use another browser, look for an equivalent extension to do the job.
+
+### Auto-typing format
+Sometimes, we need to log in two steps and the default auto-typing format {USERNAME}{TAB}{PASSWORD}{ENTER} fails. You have to define the auto-typing format for the entry.
+
+In Keepass, search for the entry :
+
+<figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
+
+![Legende](images/img2.png)
+</div></<figcaption></figcaption></figure>
+
+Double-click on the entry and override default sequence in the Auto-Type menu :
+
+<figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
+
+![Legende](images/img1.png)
+</div></<figcaption></figcaption></figure>
+
+For instance, on booking.com website, one need to use the following procedure in order to manage the 2-steps login :
+{USERNAME}{TAB}{ENTER}{DELAY 1000}{PASSWORD}{TAB}{TAB}{ENTER}
+
+Once Keepass is opened, the shortcut `CTRL`+`ALT`+`A` should work as follows :
+<figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
+
+![Legende](images/img3.gif)
+</div></<figcaption></figcaption></figure>
+
+## KeepassXC (other method)
+This is the linux friendly version of Keepass. It is more maintained than keepass, with more options and a nice documentation (https://keepassxc.org/docs/KeePassXC_UserGuide.html).
+
+### Install
+```Bash
+sudo apt install keepassxc
+```
+
+### Autofill
+You need to define a shortcut to use auto-type through Keepassxc
+<figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
+
+![Legende](images/img4.png)
+</div></<figcaption></figcaption></figure>
+
+## Keepass on Android
+Two solutions are quite famous :
+- Keepass2android
+- KeepassDX
+
+Both can be found in the Play Store. Both allows to change keyboards with login and passwords available as key buttons.
+
+I personnally like KeepassDX for its nice features ;
+- biometric control
+- the integrated keyboard which is clean
+- the auto-fill functions
+
+An example of use :
+
+<figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
+
+![Legende](images/img5.gif)
+</div></<figcaption></figcaption></figure>
+
+For more detailed tutorials,see :
+- https://www.youtube.com/watch?v=DyDEIavz0X4
+
+## Searching to an entry in a web browser on Android
+When you want to do a quick search in your Keepass database on Android, like an URL, it is sometimes painful to do manually the search by switching the app. A nice feature is implemented in Keepass2android or KeepassDX : you can simply share the web page directly with the password manager, which allow to be quicker.
 
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
@@ -546,6 +654,22 @@ Simple Commands :
 https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
 https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm
 Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options
+
+## Vim
+
+### Crypt a file (low level of encryption): 
+```vim
+:X
+```
+and enter the new passwords
+
+### Compare files through ssh
+```bash
+vimdiff /local:/path/file sftp://server//remote/path/file
+```
+One can use sftp or scp depending on the mode of communication.
+
+Note: After the server name, one have to add another `/` and not `:` 
 
 ## Other linux commands
 

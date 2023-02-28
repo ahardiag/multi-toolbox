@@ -49,6 +49,7 @@
             - [Untar only a sub directory of a compressed file and forget the first two parents](#untar-only-a-sub-directory-of-a-compressed-file-and-forget-the-first-two-parents)
             - [Untar by excluding files](#untar-by-excluding-files)
             - [Créer tar/Extraire tar](#cr%C3%A9er-tarextraire-tar)
+            - [Erase files after extracting](#erase-files-after-extracting)
         - [Command ls](#command-ls)
             - [List all folders in the current directory](#list-all-folders-in-the-current-directory)
         - [Command find](#command-find)
@@ -103,6 +104,9 @@
             - [Changer les couleurs par défaut de la commande ls LS_COLORS variable](#changer-les-couleurs-par-d%C3%A9faut-de-la-commande-ls-ls_colors-variable)
             - [Eviter les avertissements Warning avec GTK sur un terminal](#eviter-les-avertissements-warning-avec-gtk-sur-un-terminal)
             - [Lancer un processus en arrière-plan sans tuer le processus en quittant le terminal](#lancer-un-processus-en-arri%C3%A8re-plan-sans-tuer-le-processus-en-quittant-le-terminal)
+    - [History](#history)
+        - [Bash](#bash)
+        - [Fish](#fish)
     - [Tunnel SSH](#tunnel-ssh)
             - [Create a directory through ssh](#create-a-directory-through-ssh)
         - [Method 1](#method-1)
@@ -482,6 +486,12 @@ tar -zcvf archivedossier.tar dossier/ # créer une archive compressée à partir
 tar cvf - path/to/dir/ | pigz > archive.tar.gz # allow to use all cores in the machine to zip and tar
 ```
 
+#### Erase files after extracting
+This is useful when we extract in the wrong directory
+```Bash
+tar tf <file.tar.gz> | sort -r | while read file; do if [ -d "$file" ]; then rmdir "$file"; else rm -f "$file"; fi; done
+```
+
 ### Command ls
 
 #### List all folders in the current directory
@@ -801,6 +811,26 @@ export NO_AT_BRIDGE=1
 nohup <command> & disown
 ```
 
+## History
+### Bash
+Print lines of the history of bash 
+```Bash
+history | grep <word-to-search>
+```
+
+Delete a specific line given the line ID in the history :
+```Bash
+history -d <ID>
+```
+
+### Fish 
+Delete the part of the history where a word appears
+```Bash
+history clear <word-to-search>
+```
+Then tap the number of the item to delete
+
+
 ## Tunnel SSH
 
 #### Create a directory through ssh
@@ -903,7 +933,11 @@ sudo chmod o+rwx nom_du_fichier_courant
 ```
 “+” autorise, “r” pour lecture, “w” pour écriture, “x” pour éxécuter, “o”pour tous autres utilisateurs (others)
 
-Pour appliquer à un dossier, utiliser -R : sudo chmod -R o+rwx nom_du_dossier
+Pour appliquer à un dossier, utiliser -R : 
+```Bash 
+sudo chmod -R o+rwx nom_du_dossier
+```
+
 ```Bash
 find ./ -not -name "*.*" -exec chmod 700 {} + # autorise rwx pour tous les fichiers n’ayant pas d’extension
 
@@ -917,6 +951,16 @@ find ./ -type f -exec chmod 600 {} + # autorise rw pour tous les fichiers régul
 5 == r-x == read / execute
 6 == rw- == read / write
 7 == rwx == read / write / execute
+
+### Find all files (not directory) to make it readable for everyone 
+```Bash
+find ./ -type f -exec chmod 644 {} \;
+```
+### Find all directories (not simple files) to make it readable and executable 
+```Bash
+find ./ -type d -exec chmod 755 {} \;
+``̀
+
 
 ## Bash System Settings
 
