@@ -492,6 +492,11 @@ This is useful when we extract in the wrong directory
 tar tf <file.tar.gz> | sort -r | while read file; do if [ -d "$file" ]; then rmdir "$file"; else rm -f "$file"; fi; done
 ```
 
+#### Extract and exclude a subdirectory or file
+```Bash
+tar --exclude="PATTERN" -zxcf tarball.tar.gz
+```
+
 ### Command ls
 
 #### List all folders in the current directory
