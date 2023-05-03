@@ -1,7 +1,7 @@
 
 ## CCDC
 
-The CCDC allows to acess the CSD cristallographic database and provides proprietary softwares to handle the data either through graphical visualization software (like Mercury or ConQuest) or through the python API.
+The CCDC allows to access the CSD crystallographic database and provides proprietary software products to handle the data either through graphical visualization software (like Mercury or ConQuest) or through the python API.
 
 ### CCDC suite
 First, download the CCDC suite at :
@@ -10,7 +10,7 @@ You need to provide :
 - your email : the one that you provide when signing in into CCDC website
 - the Customer Number
 - the Activation Key
-You will receive an email with 24h links to download CSD softwares. Install the "CSD Portfolio 2023.1 Linux Offline Installer (18 GB)". On Ubuntu 22.04, the python API may return some errors due to missing dependencies. Still the CSD database will be present locally, and you will have access to softwares like Mercury, ConQuest, or GOLD.
+You will receive an email with 24h links to download CSD software products. Install the "CSD Portfolio 2023.1 Linux Offline Installer (18 GB)". On Ubuntu 22.04, the python API may return some errors due to missing dependencies. Still the CSD database will be present locally, and you will have access to software products like Mercury, ConQuest, or GOLD.
 
 To properly install the python API, one can use Conda through the following procedure.
 
@@ -19,7 +19,7 @@ To properly install the python API, one can use Conda through the following proc
 Source : https://fd-test.ccdc.cam.ac.uk/media/Documentation/1DBA2AB9-9DC7-423C-8EC9-9291D9C220DA/2020_CSD_Python_API_installation.pdf
 * Create a conda environment with `python=3.7`
 * Add the `conda-forge` channel
-* Install using the absolute path where the ccdc API is laocated (downloaded through the entire suite as mentionned above)
+* Install using the absolute path where the ccdc API is located (downloaded through the entire suite as mentioned above)
 * Let your system read the installation paths
 ```Bash
 conda create -n csd-python-api python=3.7 
