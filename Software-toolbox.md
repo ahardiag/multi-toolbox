@@ -10,8 +10,10 @@
     - [Python Development](#python-development)
         - [Tests](#tests)
     - [Conda](#conda)
+        - [Look for a package in a given environment](#look-for-a-package-in-a-given-environment)
         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
         - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
+    - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
     - [Keepass](#keepass)
@@ -25,6 +27,7 @@
         - [Autofill](#autofill)
     - [Keepass on Android](#keepass-on-android)
     - [Searching to an entry in a web browser on Android](#searching-to-an-entry-in-a-web-browser-on-android)
+    - [Gdrive](#gdrive)
     - [NextCloud](#nextcloud)
         - [Install Nextcloud using apt and PPA sources](#install-nextcloud-using-apt-and-ppa-sources)
         - [Uninstall all nextcloud packages and dependencies](#uninstall-all-nextcloud-packages-and-dependencies)
@@ -63,22 +66,31 @@
             - [Wrap a selection](#wrap-a-selection)
             - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
     - [Inkscape](#inkscape)
-    - [VPN](#vpn)
+    - [Network](#network)
+        - [Get IP adress from domain name](#get-ip-adress-from-domain-name)
+        - [VPN](#vpn)
+            - [Method using nmcli commands](#method-using-nmcli-commands)
+            - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
+            - [GUI OpenVPN](#gui-openvpn)
+            - [Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files](#install-old-version-of-openvpn-in-ubuntu-2204-in-order-to-use-old-ovpn-files)
+        - [Jupyter Remote](#jupyter-remote)
             - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
             - [List jupyter notebooks servers open :](#list-jupyter-notebooks-servers-open-)
             - [Delete a jupyter server :](#delete-a-jupyter-server-)
             - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
-            - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
     - [Movie converter](#movie-converter)
             - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
     - [Vim](#vim)
         - [Crypt a file low level of encryption:](#crypt-a-file-low-level-of-encryption)
         - [Compare files through ssh](#compare-files-through-ssh)
+    - [AppImage](#appimage)
     - [Other linux commands](#other-linux-commands)
         - [Update search using the KDE research](#update-search-using-the-kde-research)
         - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
 
 <!-- /TOC -->
+
+@import "CCDC.md"
 
 ## Gromacs
 #### Compile Gromacs with X-Window (`gmx view`), GPU CUDA support 
@@ -100,7 +112,6 @@ https://gist.github.com/pjohansson
 ```Bash
 cd /path/to/gromacs
 sudo wget "https://gist.githubusercontent.com/pjohansson/7a86da349161595bd4c1fa77c11be38e/raw/5e9b22b225e079e56284217c1f9dde87f4abc043/GMXRC.fish"
-cd
 source /path/to/gromacs/bin/GMXRC.fish
 ```
 
@@ -129,6 +140,12 @@ https://py-pkgs.org/03-how-to-package-a-python#writing-tests
 
 ## Conda
 
+### Look for a package in a given environment
+```Bash
+conda activate myenv
+conda list -f <package>
+```
+
 ### Look for a package in all conda environments
 ```Bash
 conda search <package> --envs
@@ -143,6 +160,36 @@ conda create -y python mdanalysis -c conda-forge --prefix $WORK/.conda/envs/make
 Then, you need to activate the environment using the path wherre it is :
 ```bash
 conda activate $WORK/.conda/envs/make_ndx
+```
+
+## Python script that create backups of conda environment
+
+`export_conda_envs.py`
+```python
+import os
+import time
+import subprocess
+import json
+
+# Get the current date
+now = time.strftime("%Y-%m-%d")
+
+# Create a directory to store the environment YAML files
+dirname = now
+if not os.path.exists(dirname):
+    os.makedirs(dirname)
+
+# Get a list of all existing conda environments
+env_list = subprocess.check_output("conda env list --json", shell=True)
+env_list = env_list.decode("utf-8").strip()
+env_list = json.loads(env_list)
+envs_path = env_list["envs"]
+
+# Loop over each environment and export it to a YAML file
+for env_path in envs_path:
+    env_name = os.path.basename(env_path)
+    env_filename = os.path.join(dirname, f"{env_name}.yml")
+    subprocess.run(f"conda env export --name {env_name} --file {env_filename}", shell=True)
 ```
 
 
@@ -262,6 +309,11 @@ For more detailed tutorials,see :
 
 ## Searching to an entry in a web browser on Android
 When you want to do a quick search in your Keepass database on Android, like an URL, it is sometimes painful to do manually the search by switching the app. A nice feature is implemented in Keepass2android or KeepassDX : you can simply share the web page directly with the password manager, which allow to be quicker.
+
+## Gdrive 
+Synchronize Google Drive from a local folder (tested on Ubuntu 22.04):
+https://doc.ubuntu-fr.org/google_drive
+
 
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
@@ -388,7 +440,7 @@ e.g., you can use a remote folder previously mouted using sshfs, or a folder hos
 
 <figure align="center"><div style="text-align:center; width:400px;margin: 0 auto">
 
-![Legende](synchro_zotero.png)
+![Legende](images/synchro_zotero.png)
 </div><figcaption>Synchronisation of Zotero on a remote folder.</figcaption></figure>
 
 **Warning** : Pay attention on closing Zotero before opening Zotero on another machine, otherwise you may damage the sqlite database file.
@@ -441,7 +493,7 @@ After enaling a previewer like Markdown Preview Enhanced
 ```html
 <figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
 
-![Legende](snap_f1_cylinder_zoom.png)
+![Legende](/path/to/image.png)
 </div><figcaption>Figure 11 </figcaption></figure>
 ```
 
@@ -496,8 +548,17 @@ The second method allows to pass from one mouse menu to another (`ALT`+`1`, `ALT
 ## Inkscape
 To add the lateral scroll : CTRL-B
 
+## Network
 
-## VPN
+### Get IP adress from domain name
+```Bash
+dig +short stackoverflow.com
+```
+
+### VPN
+
+#### Method using nmcli commands
+
 Method to add a VPN from .ovpn file using OpenVPN:
 
 Télécharger le fichier personnalisé ovpn en suivant le lien du wiki et supprimer la ligne 7 (route remote_host 255.255.255.255 net_gateway) et renommer en username.ovnp puis en ligne de commande :
@@ -516,7 +577,7 @@ Puis ajouter manuellement les DNS de google sur la connection (filiaire ou wifi)
 
 <figure align="center"><div style="text-align:center; width:500px;margin: 0 auto">
 
-![Legende](vpn1.png)
+![Legende](images/vpn1.png)
 </div><figcaption>Figure 11 </figcaption></figure>
 
 
@@ -545,9 +606,38 @@ Activer manuellement le VPN dans le menu en haut à droite, éventuellement en d
 
 <figure align="center"><div style="text-align:center; width:300px;margin: 0 auto">
 
-![Legende](vpn2.png)
+![Legende](images/vpn2.png)
 </div><figcaption>Figure 11 </figcaption></figure>
 
+#### Use VPN on Debian 10 (machine sirius)
+```Bash
+# Activate VPN 
+nmcli connection up hardiagon
+# Disable IPV4 connections
+vpn_id=$(nmcli connection show | grep tun0 | head -n 1 | awk '{print $2}')
+nmcli connection modify $vpn_id  ipv4.never-default true
+# Test both webserver and remote server
+ping google.fr -w 3
+ping toto.lbt.ibpc.fr -w 3
+```
+
+Rk : To do it automatically,  one can write this on a script called vpn which path is visible by the system.
+
+
+#### GUI OpenVPN 
+
+[Documentation Wiki IBPC](pdf/guide.vpn.ubuntu_16.10.pdf)
+
+#### Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files
+
+https://askubuntu.com/questions/1404673/imported-openvpn-ovpn-profile-not-working-anymore-after-update-to-ubuntu-22-0/1406472#1406472
+
+To prevent the uupdate to be automatic :
+```Bash
+sudo apt-mark hold openvpn
+```
+
+### Jupyter Remote
 
 #### Open a jupyter notebook from a remote server:
 
@@ -584,21 +674,6 @@ jupyter notebook stop 9999
 ```Bash
 rm -i /home/hardiagon/.local/share/jupyter/runtime/*
 ```
-
-#### Use VPN on Debian 10 (machine sirius)
-```Bash
-# Activate VPN 
-nmcli connection up hardiagon
-# Disable IPV4 connections
-vpn_id=$(nmcli connection show | grep tun0 | head -n 1 | awk '{print $2}')
-nmcli connection modify $vpn_id  ipv4.never-default true
-# Test both webserver and remote server
-ping google.fr -w 3
-ping toto.lbt.ibpc.fr -w 3
-```
-
-Rk : To do it automatically,  one can write this on a script called vpn which path is visible by the system.
-
 
 
 <!--stackedit_data:
@@ -670,6 +745,10 @@ vimdiff /local:/path/file sftp://server//remote/path/file
 One can use sftp or scp depending on the mode of communication.
 
 Note: After the server name, one have to add another `/` and not `:` 
+
+
+## AppImage
+If we want to access easily to programs that can be runned by an AppImage, one can use `appimagelauncher`. Just follow this tutorial (in french) :https://ubunlog.com/fr/appimagelauncher-integra-appimges-en-ubuntu/
 
 ## Other linux commands
 
