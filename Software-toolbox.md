@@ -73,7 +73,9 @@
             - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
             - [GUI OpenVPN](#gui-openvpn)
             - [Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files](#install-old-version-of-openvpn-in-ubuntu-2204-in-order-to-use-old-ovpn-files)
-        - [Jupyter Remote](#jupyter-remote)
+    - [Jupyter](#jupyter)
+        - [Change conda environment](#change-conda-environment)
+        - [Work remotely](#work-remotely)
             - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
             - [List jupyter notebooks servers open :](#list-jupyter-notebooks-servers-open-)
             - [Delete a jupyter server :](#delete-a-jupyter-server-)
@@ -636,8 +638,19 @@ To prevent the uupdate to be automatic :
 ```Bash
 sudo apt-mark hold openvpn
 ```
+## Jupyter
 
-### Jupyter Remote
+### Change conda environment
+source : https://towardsdatascience.com/get-your-conda-environment-to-show-in-jupyter-notebooks-the-easy-way-17010b76e874
+
+To avoid re-starting a jupyter server when we change conda environment, one can change kernels in the notebook menus.
+
+1) Install `jupyterlab`,`notebook`,`ipykernel` in all conda environments you want to work in*
+2) Install `jupyterlab`,`notebook` and `nb_conda_kernels` in your base environment
+3) Launch `jupyter notebook` command from the `base` environment 
+4) After opening a notebook, use `Kernel`>`Change kernel` and choose the conda environment
+
+### Work remotely
 
 #### Open a jupyter notebook from a remote server:
 
