@@ -14,6 +14,7 @@
         - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
         - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
     - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
+    - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
     - [Keepass](#keepass)
@@ -194,7 +195,23 @@ for env_path in envs_path:
     subprocess.run(f"conda env export --name {env_name} --file {env_filename}", shell=True)
 ```
 
+## Set environment variables in conda env
 
+```bash
+conda env config vars set MY_ENV_VARIABLE=my_env_variable
+```
+This is not clear in which file this is stored, but when exporting the environment into a `yml` file, it will track environment variables.
+
+```bash
+conda activate my_env
+conda export > my_env.yml
+```
+In the end lines of `my_env.yml`, one will have :
+
+```yml
+variables:
+    MY_ENV_VARIABLE: my_env_variable
+```
 
 ## Pip
 
@@ -670,8 +687,8 @@ Remark :
 Host must be defined in .ssh/config
 If the terminal is closed, the connection is lost, but thesame jupyter notebook can be reached by opening it the connection.
 
-- Lauch in a we browser by typing localhost:9999/
-A password is sometimes needed
+- Launch in a web browser bar address as `localhost:9999/`
+A password is sometimes needed.
 
 #### List jupyter notebooks servers open :
 ```Bash
