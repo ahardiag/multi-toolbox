@@ -17,6 +17,14 @@
     - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
+    - [Git](#git)
+        - [Version a git repo](#version-a-git-repo)
+        - [Untrack files](#untrack-files)
+        - [Logging activity](#logging-activity)
+        - [Add remote repo](#add-remote-repo)
+        - [Merging a branch on another](#merging-a-branch-on-another)
+        - [Add one commit from another branch](#add-one-commit-from-another-branch)
+        - [Keep local changes not committed in memory](#keep-local-changes-not-committed-in-memory)
     - [Keepass](#keepass)
         - [Download linux client](#download-linux-client)
         - [Get passwords saved in a web browser](#get-passwords-saved-in-a-web-browser)
@@ -75,6 +83,8 @@
             - [GUI OpenVPN](#gui-openvpn)
             - [Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files](#install-old-version-of-openvpn-in-ubuntu-2204-in-order-to-use-old-ovpn-files)
     - [Jupyter](#jupyter)
+        - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
+        - [Convert a notebook into a python script](#convert-a-notebook-into-a-python-script)
         - [Change conda environment](#change-conda-environment)
         - [Work remotely](#work-remotely)
             - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
@@ -221,6 +231,63 @@ Go to the subdirectory where the package directory is and :
 ```Bash
 pip install ./directory_source
 pip uninstall ./directory_source 
+```
+
+## Git
+
+### Version a git repo
+```bash
+git tag v0.0.0
+```
+
+### Untrack files 
+In an editor create a `.gitigonre` file as the following :
+
+```
+# ignore ALL .log files
+*.log
+
+# ignore ALL files in ANY directory named temp
+temp/
+```
+
+### Logging activity
+```bash
+git log # look at the last commit
+git reflog # track the last changes, to couple with --hard commands
+git reset --hard  HEAD@{1} # see the last line
+git log origin/master..master # difference between remote log and local one
+git show --stat # more detailed log
+```
+
+### Add remote repo
+It can be useful if one we want to catch enhancement from different forks.
+```bash
+git remote add <local name for remote> <github URL>
+cat .git/config # look at the name of the upstram and remote repos
+```
+
+### Merging a branch on another
+
+```bash
+
+git checkout master # change to be in the final branch
+git merge dev     # merge the dev branch on the master one
+```
+Then use Vscode to fix the conflicts manually.
+
+### Add one commit from another branch
+```bash
+git checkout mybranch # branch to modify
+git cherry-pick Y # commit the commit with hash Y from another branch 
+```
+
+### Keep local changes not committed in memory
+If you are working in a branch but you want to modify urgently another branch, without doing the commit.
+```bash
+git stash
+git checkout branch-urgent
+git stash pop
 ```
 
 ## Keepass
@@ -656,6 +723,17 @@ To prevent the uupdate to be automatic :
 sudo apt-mark hold openvpn
 ```
 ## Jupyter
+
+### S’identifier en tant qu’administrateur
+```Bash
+jupyter notebook --allow-root
+```
+
+### Convert a notebook into a python script
+Need module `jupyter_contrib_nbextensions` :
+```Bash
+jupyter nbconvert --to script notebook.ipynb
+```
 
 ### Change conda environment
 source : https://towardsdatascience.com/get-your-conda-environment-to-show-in-jupyter-notebooks-the-easy-way-17010b76e874
