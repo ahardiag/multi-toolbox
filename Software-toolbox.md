@@ -15,6 +15,7 @@
         - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
     - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
     - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
+- [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
     - [Pip](#pip)
         - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
     - [Git](#git)
@@ -222,6 +223,20 @@ In the end lines of `my_env.yml`, one will have :
 variables:
     MY_ENV_VARIABLE: my_env_variable
 ```
+
+# Source a file when activating a conda environment
+```bash
+conda activate myenv
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d/
+cat "my_command_at_each_activation" > $CONDA_PREFIX/etc/conda/activate.d/set_environment.fish
+```
+
+Example of sourcing file : `set_environment.fish`
+```fish
+set -gx PATH "/opt/.conda/envs/crystalnets/julia_env/pyjuliapkg/install/bin" $PATH # add path to run julia executable 
+```
+TODO : add also deactivate file
+
 
 ## Pip
 
