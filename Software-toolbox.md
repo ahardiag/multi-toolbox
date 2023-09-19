@@ -565,6 +565,10 @@ https://doc.ubuntu-fr.org/google_drive#google-drive-ocamlfuse
     remarks : Giving too many errors with latex compilation
 - **LTex** : orthiographic corrector for markdown and latex files
 To change the language, go to the settings of the extension
+- **French Language Pack**
+- **Jupyter**
+- **Python** : to have better debug control on python code
+- **vscode-pdf** (tomoki1207)
 
 
 ### Shortcuts
@@ -585,10 +589,12 @@ After enaling a previewer like Markdown Preview Enhanced
 `CTRL+K` `V`
 
 #### Extensions :
-- **Markdown Preview Enhanced** : preview of markdown
-- **Markdown PDF** : to convert onin pdf format
-- **Auto Markdown TOC** : to create table of Contents
+- **Markdown Preview Enhanced**(YiYi Wang) : preview of markdown
+- **Markdown PDF** : to convert in pdf format
+- **Auto Markdown TOC** (Hunter Tran) : to create table of Contents
+click right and update current TOC
 - **Markdown Table** : to manipulate tables
+- **Markdown Include** : include .md file into another .md file
 
 #### Image centered with caption :
 ```html
