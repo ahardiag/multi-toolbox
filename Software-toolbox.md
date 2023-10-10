@@ -95,6 +95,7 @@
       - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
   - [Movie converter](#movie-converter)
       - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
+    - [Convert images into a movie](#convert-images-into-a-movie)
   - [Vim](#vim)
     - [Crypt a file (low level of encryption):](#crypt-a-file-low-level-of-encryption)
     - [Compare files through ssh](#compare-files-through-ssh)
@@ -103,6 +104,7 @@
     - [Update search using the KDE research](#update-search-using-the-kde-research)
     - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
 
+<!-- /TOC -->
 <!-- /TOC -->
 <!-- /TOC -->
 
@@ -876,6 +878,11 @@ Simple Commands :
 https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
 https://www.winxdvd.com/resize-video/compress-video-with-ffmpeg.htm
 Documentation : https://ffmpeg.org/ffmpeg.html#Audio-Options
+
+### Convert images into a movie
+```bash
+ffmpeg -framerate 24 -pattern_type glob -i 'coral_single_images/coral_single_v*.png' -c:v libx264 -r 30 -pix_fmt yuv420p coral_single.mp4
+```
 
 ## Vim
 
