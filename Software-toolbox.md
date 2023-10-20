@@ -7,6 +7,8 @@
       - [Compile Gromacs with X-Window (`gmx view`), GPU CUDA support](#compile-gromacs-with-x-window-gmx-view-gpu-cuda-support)
     - [Change gromacs version in a fish shell](#change-gromacs-version-in-a-fish-shell)
     - [Use a handmade script `~/.local/bin/source_gmx` to source files in different location (in a fish shell)](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shell)
+  - [VMD](#vmd)
+    - [Create a `.destop` file on Linux to open VMD using explorer](#create-a-destop-file-on-linux-to-open-vmd-using-explorer)
   - [Python Development](#python-development)
     - [Tests](#tests)
   - [Conda](#conda)
@@ -189,6 +191,55 @@ funcsave source_gmx
 Example of use : 
 ```Bash
 source_gmx -f 2019.2
+```
+
+## VMD
+
+### Create a `.destop` file on Linux to open VMD using explorer
+ref : https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/29164.html
+
+```bash
+echo '''
+function funexitcode {
+        if [[ $? -ne 0 ]]; then
+                echo "ERROR: ${1}; exiting script"
+                exit 1
+        fi
+}
+
+### add icon for desktop file
+FILE1="/usr/local/share/icons/VMD.png"
+funexitcode "define FILE1"
+mkdir -p "$(dirname ${FILE1})"
+funexitcode "mkdir $_"
+cp "./$(basename ${FILE1})" "${FILE1}"
+#funexitcode "cp VMD.png $_"
+
+### create menu entry
+DIR="/usr/local/share/applications"
+funexitcode "define DIR"
+FILE="${DIR}/VMD.desktop"
+funexitcode "define FILE"
+if [[ -e ${FILE} ]]; then
+  echo "ERROR: \"${FILE}\" present"
+  exit 1
+fi
+mkdir -p $DIR && touch  "${FILE}"
+echo "[Desktop Entry]" >> "${FILE}"
+echo "Type=Application" >> "${FILE}"
+echo "Encoding=UTF-8" >> "${FILE}"
+echo "Name=VMD" >> "${FILE}"
+echo "Comment=Visual Molecular Dynamics" >> "${FILE}"
+echo "Exec=vmd %F" >> "${FILE}"
+echo "Icon=${FILE1}" >> "${FILE}"
+echo "Terminal=true" >> "${FILE}"
+echo "Categories=Science;" >> "${FILE}"
+funexitcode "appending text to \"${FILE}\""
+''' > desktop
+
+wget "https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/att-29164/VMD.icon.7z"
+7zz e VMD.icon.7z -y
+./desktop 
 ```
 
 ## Python Development
