@@ -135,13 +135,53 @@ source /path/to/gromacs/bin/GMXRC.fish
 
 ### Use a handmade script `~/.local/bin/source_gmx` to source files in different location (in a fish shell)
 
-In a config file `~/source_gmxrc`, put all the paths where different gromacs version are installed as the following :
+```bash
+#!/bin/bash
+
+configfile=$HOME/.source_gmxrc
+version=''
+verbose=false
+print_usage() {
+  printf "Usage: source_gmx -f version [-c configfile]\n"
+  printf "Available versions are : $(sed 1d $configfile | awk 'BEGIN { ORS = " " } { print $1 }')\n"
+}
+
+while getopts 'f:c' flag; do
+  case "${flag}" in
+    f) version="${OPTARG}" ;;
+    c) configfile="${OPTARG}" ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
+
+while IFS= read -r line 
+do 
+case $line in
+       ''|\#*) continue ;;         # skip blank lines and lines starting with #
+   esac
+arr=($line)
+
+# Read parameters
+if [ "$version" == "${arr[0]}" ]
+then
+    echo "Executing : source ${arr[1]}"
+    source ${arr[1]}
+    return
+fi
+done < $configfile
+
+print_usage
+```
+
+In a config file `~/.source_gmxrc`, put all the paths where different gromacs version are installed as the following :
 ```Bash
 # version_name path
-2019.2 /path/to/gromacs-2019.2
+2019.2 /path/to/gromacs-2019.2/GMXRC
 ...
 ```
-Create a fish alias 
+Create a fish alias :
+It requiers `bass`, which can be installed through the docs in the github repo (https://github.com/edc/bass).
 ```Bash
 alias source_gmx='bass source source_gmx'
 funcsave source_gmx
