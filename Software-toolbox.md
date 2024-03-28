@@ -110,7 +110,7 @@
 <!-- /TOC -->
 <!-- /TOC -->
 
-@import "CCDC.md"
+!include "CCDC.md"
 
 ## Gromacs
 #### Compile Gromacs with X-Window (`gmx view`), GPU CUDA support 
