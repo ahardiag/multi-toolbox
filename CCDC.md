@@ -43,4 +43,13 @@ print("ccdc.io.csd_version()", ccdc.io.csd_version())
 from pathlib import Path
 subset_mofs_all = Path(ccdc.io.csd_directory()) / "subsets" / "CSD_MOF_subsets/MOF_subset.gcd"
 print(f"Number of MOFs: {len(ccdc.io.EntryReader(str(subset_mofs_all)))}")
-``` 
+```
+
+### Update the Activation Key
+If your activation key expires, you will need to activate your new licence using your activation key (36 letters key).
+On Linux, go to the directory where the CSD suite is located and run the `ccdc_activator_gui` executable, e.g. :
+```bash
+cd /opt/CCDC/CSD_2022/bin
+./ccdc_activator_gui
+```
+Copy-Paste the new activation key and a message to confirm the licence was succesfully activated should appear. In a python shell , the command `import ccdc` should work now.
