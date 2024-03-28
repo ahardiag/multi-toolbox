@@ -15,9 +15,9 @@
     - [Look for a package in a given environment](#look-for-a-package-in-a-given-environment)
     - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
     - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
-  - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
-  - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
-- [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
+    - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
+    - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
+    - [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
   - [Pip](#pip)
     - [Install/Uninstall a package from source using `setup.py` and `distutils`](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
   - [Git](#git)
@@ -102,6 +102,7 @@
     - [Crypt a file (low level of encryption):](#crypt-a-file-low-level-of-encryption)
     - [Compare files through ssh](#compare-files-through-ssh)
   - [AppImage](#appimage)
+  - [CCDC : Cristallographic Database](#ccdc--cristallographic-database)
   - [Other linux commands](#other-linux-commands)
     - [Update search using the KDE research](#update-search-using-the-kde-research)
     - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
@@ -109,8 +110,6 @@
 <!-- /TOC -->
 <!-- /TOC -->
 <!-- /TOC -->
-
-!include "CCDC.md"
 
 ## Gromacs
 #### Compile Gromacs with X-Window (`gmx view`), GPU CUDA support 
@@ -271,7 +270,7 @@ Then, you need to activate the environment using the path wherre it is :
 conda activate $WORK/.conda/envs/make_ndx
 ```
 
-## Python script that create backups of conda environment
+### Python script that create backups of conda environment
 
 `export_conda_envs.py`
 ```python
@@ -301,7 +300,7 @@ for env_path in envs_path:
     subprocess.run(f"conda env export --name {env_name} --file {env_filename}", shell=True)
 ```
 
-## Set environment variables in conda env
+### Set environment variables in conda env
 
 ```bash
 conda env config vars set MY_ENV_VARIABLE=my_env_variable
@@ -319,7 +318,7 @@ variables:
     MY_ENV_VARIABLE: my_env_variable
 ```
 
-# Source a file when activating a conda environment
+### Source a file when activating a conda environment
 ```bash
 conda activate myenv
 mkdir -p $CONDA_PREFIX/etc/conda/activate.d/
@@ -984,7 +983,7 @@ ffmpeg -framerate 24 -pattern_type glob -i 'coral_single_images/coral_single_v*.
 and enter the new passwords
 
 ### Compare files through ssh
-```bash
+```bashd
 vimdiff /local:/path/file sftp://server//remote/path/file
 ```
 One can use sftp or scp depending on the mode of communication.
@@ -994,6 +993,9 @@ Note: After the server name, one have to add another `/` and not `:`
 
 ## AppImage
 If we want to access easily to programs that can be runned by an AppImage, one can use `appimagelauncher`. Just follow this tutorial (in french) :https://ubunlog.com/fr/appimagelauncher-integra-appimges-en-ubuntu/
+
+## CCDC : Cristallographic Database
+To set up the CSD databse suite and Python API on linux, please follow the instructions found [here](./CCDC.md).
 
 ## Other linux commands
 
