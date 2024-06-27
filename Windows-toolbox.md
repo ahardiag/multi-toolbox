@@ -14,9 +14,14 @@ Or on a powershell :
 ipconfig /all
 ```
 
-# Owncloud client
+# Owncloud 
+### Client
 ## Add an account 
 - Download the last version of the client : https://owncloud.com/desktop-app
 - Connect in the web server : https://mycore.core-cloud.net
 - Got to Paramètres -> Demander  de Créer un nouveau mot de passe
 - Connect to the client using email adress and the password you just have defined
+
+### Webdav
+tutorial : https://doc.owncloud.com/webui/next/classic_ui/files/access_webdav.html#mapping-drives-with-windows-explorer
+This is nice when synchronization with Ownclient bugs (quite often I noticed), but i requires a good connexion since the data is not stored in local and based on Owncloud web server requests.
