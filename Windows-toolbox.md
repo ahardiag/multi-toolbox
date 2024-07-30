@@ -25,3 +25,8 @@ ipconfig /all
 ### Webdav
 tutorial : https://doc.owncloud.com/webui/next/classic_ui/files/access_webdav.html#mapping-drives-with-windows-explorer
 This is nice when synchronization with Ownclient bugs (quite often I noticed), but i requires a good connexion since the data is not stored in local and based on Owncloud web server requests.
+
+# VMD
+Install VMD version Version 1.9.4 LATEST ALPHA (2022-04-27) on Windows 11 : 
+1) Download and instal vmd
+2) Create an environment variable to avoid error dur to OPSRAY : https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/34008.html
