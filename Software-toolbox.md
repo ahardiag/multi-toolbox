@@ -126,6 +126,30 @@ make check
 sudo make install
 source /opt/gromacs/bin/GMXRC
 ```
+
+#### Compile Gromacs 2024.3 with GPU CUDA support, Ubuntu 22.04 and GPU GeForce 1660 SUPER
+1) First install the Nvidia drivers
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt install nvidia-drivers-560-open
+```
+Or use the GUI drivers manager
+Then, reboot.
+
+2) Install the Cuda toolkit, select only the toolkit, not the drivers to install
+```
+wget https://developer.download.nvidia.com/compute/cuda/12.6.1/local_installers/cuda_12.6.1_560.35.03_linux.run
+sudo sh cuda_12.6.1_560.35.03_linux.run
+```
+3) Compile Gromacs
+
+See [here](https://manual.gromacs.org/documentation/current/install-guide/index.html)
+and just change this line :
+```
+cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DCMAKE_INSTALL_PREFIX=~/Programs/gromacs_2024.3  -DGMX_GPU=CUDA -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-12.6 -DCMAKE_CUDA_COMPILER=/usr/local/cuda-12.6/bin/nvcc  
+```
+
 ### Change gromacs version in a fish shell
 https://gist.github.com/pjohansson
 ```Bash
