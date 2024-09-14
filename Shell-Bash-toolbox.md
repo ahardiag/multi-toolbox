@@ -43,7 +43,7 @@
       - [Get only the part of a file between two matching term (excluding matching lines and including them)](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
       - [Transform a ouptut in column to a unique row with a white space separation](#transform-a-ouptut-in-column-to-a-unique-row-with-a-white-space-separation)
       - [Récupère des données utilisant la la ligne,colonne, motif avec awk](#récupère-des-données-utilisant-la-la-lignecolonne-motif-avec-awk)
-    - [Backup and tarball files](#backup-and-tarball-files)
+    - [Archive extraction (`tar`)](#archive-extraction-tar)
       - [Updating a existing tar file by adding/updating a subdirectory; create the archive it if not exist](#updating-a-existing-tar-file-by-addingupdating-a-subdirectory-create-the-archive-it-if-not-exist)
       - [Untar an archive folder in another name](#untar-an-archive-folder-in-another-name)
       - [Untar only a sub directory of a compressed file (and forget the first two parents)](#untar-only-a-sub-directory-of-a-compressed-file-and-forget-the-first-two-parents)
@@ -51,6 +51,8 @@
       - [Créer tar/Extraire tar](#créer-tarextraire-tar)
       - [Erase files after extracting](#erase-files-after-extracting)
       - [Extract and exclude a subdirectory or file](#extract-and-exclude-a-subdirectory-or-file)
+      - [Extract only a subfolder of a large `.tar` archive](#extract-only-a-subfolder-of-a-large-tar-archive)
+      - [Display the size of a subfolder/file inside a `tar` archive without extracting it](#display-the-size-of-a-subfolderfile-inside-a-tar-archive-without-extracting-it)
     - [Command ls](#command-ls)
       - [List all folders in the current directory](#list-all-folders-in-the-current-directory)
     - [Command find](#command-find)
@@ -185,7 +187,7 @@
       - [Get only the part of a file between two matching term (excluding matching lines and including them)](#get-only-the-part-of-a-file-between-two-matching-term-excluding-matching-lines-and-including-them)
       - [Transform a ouptut in column to a unique row with a white space separation](#transform-a-ouptut-in-column-to-a-unique-row-with-a-white-space-separation)
       - [Récupère des données utilisant la la ligne,colonne, motif avec awk](#récupère-des-données-utilisant-la-la-lignecolonne-motif-avec-awk)
-    - [Backup and tarball files](#backup-and-tarball-files)
+    - [Archive extraction (`tar`)](#archive-extraction-tar)
       - [Updating a existing tar file by adding/updating a subdirectory; create the archive it if not exist](#updating-a-existing-tar-file-by-addingupdating-a-subdirectory-create-the-archive-it-if-not-exist)
       - [Untar an archive folder in another name](#untar-an-archive-folder-in-another-name)
       - [Untar only a sub directory of a compressed file (and forget the first two parents)](#untar-only-a-sub-directory-of-a-compressed-file-and-forget-the-first-two-parents)
@@ -193,6 +195,8 @@
       - [Créer tar/Extraire tar](#créer-tarextraire-tar)
       - [Erase files after extracting](#erase-files-after-extracting)
       - [Extract and exclude a subdirectory or file](#extract-and-exclude-a-subdirectory-or-file)
+      - [Extract only a subfolder of a large `.tar` archive](#extract-only-a-subfolder-of-a-large-tar-archive)
+      - [Display the size of a subfolder/file inside a `tar` archive without extracting it](#display-the-size-of-a-subfolderfile-inside-a-tar-archive-without-extracting-it)
     - [Command ls](#command-ls)
       - [List all folders in the current directory](#list-all-folders-in-the-current-directory)
     - [Command find](#command-find)
@@ -596,7 +600,7 @@ cat filename| | awk '/MOTIF/ {print $1, $2}'
 cat filename| | awk ' FNR == 5 {print $1, $2}'
 ```
 
-### Backup and tarball files
+### Archive extraction (`tar`)
 
 #### Updating a existing tar file by adding/updating a subdirectory; create the archive it if not exist
 ```Bash
@@ -613,6 +617,7 @@ mkdir -p archive_new && tar -xvf archive.tar -C archive_new --strip-components=1
 ```Bash
 tar --strip-components=2 -xfvz archive.tar.gz folder/in/archive
 ```
+
 #### Untar by excluding files
 Remark : it takes still some time since it reads the disk sequentially.
 ```Bash
@@ -637,6 +642,19 @@ tar tf <file.tar.gz> | sort -r | while read file; do if [ -d "$file" ]; then rmd
 #### Extract and exclude a subdirectory or file
 ```Bash
 tar --exclude="PATTERN" -zxcf tarball.tar.gz
+```
+
+#### Extract only a subfolder of a large `.tar` archive
+```bash
+tar -xvf <archive>.tar -C <path/to/output>
+<./relative/folder/> --strip-components=2
+```
+e.g. `strip-components`=2 will only create the architecture tree from the locatio of the realtive path folder in the tar achive.
+
+#### Display the size of a subfolder/file inside a `tar` archive without extracting it
+
+```bash
+tar -tvf <archive>.tar | grep "<relative/path/to/folder/(file)>" | awk '{sum += $3} END {print sum}' | numfmt --to=iec
 ```
 
 ### Command ls
@@ -959,6 +977,7 @@ nohup <command> & disown
 ```
 
 ## History
+
 ### Bash
 Print lines of the history of bash 
 ```Bash
@@ -1103,6 +1122,7 @@ find ./ -type f -exec chmod 600 {} + # autorise rw pour tous les fichiers régul
 ```Bash
 find ./ -type f -exec chmod 644 {} \;
 ```
+
 ### Find all directories (not simple files) to make it readable and executable 
 ```Bash
 find ./ -type d -exec chmod 755 {} \;
