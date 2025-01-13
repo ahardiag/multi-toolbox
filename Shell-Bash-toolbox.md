@@ -89,6 +89,8 @@
       - [Insérer ligne après matcher un motif](#insérer-ligne-après-matcher-un-motif)
       - [Insérer ligne avant matcher un motif](#insérer-ligne-avant-matcher-un-motif)
       - [Replacer toute une line après avoir match un motif](#replacer-toute-une-line-après-avoir-match-un-motif)
+    - [command curl](#command-curl)
+      - [Zip and download a sub-directory of a github repo](#zip-and-download-a-sub-directory-of-a-github-repo)
     - [Sorting tools](#sorting-tools)
       - [Sort a list of files depending on a part of the string name](#sort-a-list-of-files-depending-on-a-part-of-the-string-name)
       - [Sort a list of filename in the good order including 1-9 numbers](#sort-a-list-of-filename-in-the-good-order-including-1-9-numbers)
@@ -233,6 +235,8 @@
       - [Insérer ligne après matcher un motif](#insérer-ligne-après-matcher-un-motif)
       - [Insérer ligne avant matcher un motif](#insérer-ligne-avant-matcher-un-motif)
       - [Replacer toute une line après avoir match un motif](#replacer-toute-une-line-après-avoir-match-un-motif)
+    - [command curl](#command-curl)
+      - [Zip and download a sub-directory of a github repo](#zip-and-download-a-sub-directory-of-a-github-repo)
     - [Sorting tools](#sorting-tools)
       - [Sort a list of files depending on a part of the string name](#sort-a-list-of-files-depending-on-a-part-of-the-string-name)
       - [Sort a list of filename in the good order including 1-9 numbers](#sort-a-list-of-filename-in-the-good-order-including-1-9-numbers)
@@ -856,7 +860,17 @@ sed -i '/.*MOTIF.*/i NEWLINE' file
 ```Bash
 sed -i 's/.*MOTIF.*/WHOLE LINE/' file
 ```
+### command curl
 
+#### Zip and download a sub-directory of a github repo
+```bash
+curl -L -o myfolder.zip https://github.com/gitlogin/path/to/myfolder.zip \
+&& unzip -j myfolder.zip "gitlogin-main/path/to/myfolder" -d myfolder
+```
+> To unzip the file properly, one need to now the local architecture
+
+> Once unzipping the first repo is gitlogin-main or gitlogin-branch with the branch it has been taken from
+ 
 ### Sorting tools 
 
 #### Sort a list of files depending on a part of the string name
