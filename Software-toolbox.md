@@ -3,112 +3,112 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
-  - [Gromacs](#gromacs)
-      - [Compile Gromacs with X-Window (`gmx view`), GPU CUDA support](#compile-gromacs-with-x-window-gmx-view-gpu-cuda-support)
-      - [Compile Gromacs 2024.3 with GPU CUDA support, Ubuntu 22.04 and GPU GeForce 1660 SUPER](#compile-gromacs-20243-with-gpu-cuda-support-ubuntu-2204-and-gpu-geforce-1660-super)
-    - [Change gromacs version in a fish shell](#change-gromacs-version-in-a-fish-shell)
-    - [Use a handmade script `~/.local/bin/source_gmx` to source files in different location (in a fish shell)](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shell)
-  - [VMD](#vmd)
-    - [Create a `.destop` file on Linux to open VMD using explorer](#create-a-destop-file-on-linux-to-open-vmd-using-explorer)
-    - [Open LAMMPS data files](#open-lammps-data-files)
-    - [Tcl toolbox](#tcl-toolbox)
-      - [Autocomplete in VMD text mode shell](#autocomplete-in-vmd-text-mode-shell)
-      - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
-      - [Render with tachyon and transparency and smaller size](#render-with-tachyon-and-transparency-and-smaller-size)
-    - [Tutorials](#tutorials)
-      - [Render a snapshot](#render-a-snapshot)
-    - [Crop an image](#crop-an-image)
-      - [Operations on list](#operations-on-list)
-      - [Wrap a selection](#wrap-a-selection)
-      - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
-  - [Python Development](#python-development)
-    - [Tests](#tests)
-  - [Conda](#conda)
-    - [Look for a package in a given environment](#look-for-a-package-in-a-given-environment)
-    - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
-    - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
-    - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
-    - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
-    - [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
-  - [Pip](#pip)
-    - [Install/Uninstall a package from source using `setup.py` and `distutils`](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
-  - [Git](#git)
-    - [Version a git repo](#version-a-git-repo)
-    - [Untrack files](#untrack-files)
-    - [Logging activity](#logging-activity)
-    - [Add remote repo](#add-remote-repo)
-    - [Merging a branch on another](#merging-a-branch-on-another)
-    - [Add one commit from another branch](#add-one-commit-from-another-branch)
-    - [Keep local changes not committed in memory](#keep-local-changes-not-committed-in-memory)
-  - [Keepass](#keepass)
-    - [Download linux client](#download-linux-client)
-    - [Get passwords saved in a web browser](#get-passwords-saved-in-a-web-browser)
-    - [Use auto-type to fill automatically fields when signing in from a web page](#use-auto-type-to-fill-automatically-fields-when-signing-in-from-a-web-page)
-    - [Add urls in web page titles](#add-urls-in-web-page-titles)
-    - [Auto-typing format](#auto-typing-format)
-  - [KeepassXC (other method)](#keepassxc-other-method)
-    - [Install](#install)
-    - [Autofill](#autofill)
-  - [Keepass on Android](#keepass-on-android)
-  - [Searching to an entry in a web browser on Android](#searching-to-an-entry-in-a-web-browser-on-android)
-  - [Gdrive](#gdrive)
-  - [NextCloud](#nextcloud)
-    - [Install Nextcloud using apt and PPA sources](#install-nextcloud-using-apt-and-ppa-sources)
-    - [Uninstall all nextcloud packages and dependencies](#uninstall-all-nextcloud-packages-and-dependencies)
-    - [Using snap](#using-snap)
-  - [Latex](#latex)
-    - [Latex distribution](#latex-distribution)
-    - [Forward/backward previex](#forwardbackward-previex)
-    - [On VSCode](#on-vscode)
-  - [Github](#github)
-    - [Save a token (password key)](#save-a-token-password-key)
-    - [Deposit of a source code on HAL](#deposit-of-a-source-code-on-hal)
-  - [Zotero](#zotero)
-    - [Commands](#commands)
-      - [Open the preview in Vscode](#open-the-preview-in-vscode)
-    - [Open Zotero with default GTK environment](#open-zotero-with-default-gtk-environment)
-    - [Backup/Restore Zotero](#backuprestore-zotero)
-    - [Repair sqlite](#repair-sqlite)
-    - [Syncronize Zotero on a remote folder](#syncronize-zotero-on-a-remote-folder)
-  - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
-    - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
-  - [VSCode](#vscode)
-    - [Useful extensions](#useful-extensions)
-    - [Shortcuts](#shortcuts)
-      - [Overview of principal keyboard shortcuts :](#overview-of-principal-keyboard-shortcuts-)
-    - [Markdown](#markdown)
-      - [Preview markdown (on the right side)](#preview-markdown-on-the-right-side)
-      - [Extensions :](#extensions-)
-      - [Link references in a markdown file](#link-references-in-a-markdown-file)
-      - [Image centered with caption :](#image-centered-with-caption-)
-  - [Inkscape](#inkscape)
-  - [Network](#network)
-    - [Get IP adress from domain name](#get-ip-adress-from-domain-name)
-    - [VPN](#vpn)
-      - [Method using nmcli commands](#method-using-nmcli-commands)
-      - [Use VPN on Debian 10 (machine sirius)](#use-vpn-on-debian-10-machine-sirius)
-      - [GUI OpenVPN](#gui-openvpn)
-      - [Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files](#install-old-version-of-openvpn-in-ubuntu-2204-in-order-to-use-old-ovpn-files)
-  - [Jupyter](#jupyter)
-    - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
-    - [Convert a notebook into a python script](#convert-a-notebook-into-a-python-script)
-    - [Change conda environment](#change-conda-environment)
-    - [Work remotely](#work-remotely)
-      - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
-      - [List jupyter notebooks servers open :](#list-jupyter-notebooks-servers-open-)
-      - [Delete a jupyter server :](#delete-a-jupyter-server-)
-      - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
-  - [Movie converter](#movie-converter)
-      - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
-    - [Convert images into a movie](#convert-images-into-a-movie)
-  - [Vim](#vim)
-    - [Crypt a file (low level of encryption):](#crypt-a-file-low-level-of-encryption)
-    - [Compare files through ssh](#compare-files-through-ssh)
-  - [AppImage](#appimage)
-  - [CCDC : Cristallographic Database](#ccdc--cristallographic-database)
-  - [Other linux commands](#other-linux-commands)
-    - [Update search using the KDE research](#update-search-using-the-kde-research)
-    - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
+    - [Gromacs](#gromacs)
+            - [Compile Gromacs with X-Window gmx view, GPU CUDA support](#compile-gromacs-with-x-window-gmx-view-gpu-cuda-support)
+            - [Compile Gromacs 2024.3 with GPU CUDA support, Ubuntu 22.04 and GPU GeForce 1660 SUPER](#compile-gromacs-20243-with-gpu-cuda-support-ubuntu-2204-and-gpu-geforce-1660-super)
+        - [Change gromacs version in a fish shell](#change-gromacs-version-in-a-fish-shell)
+        - [Use a handmade script ~/.local/bin/source_gmx to source files in different location in a fish shell](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shell)
+    - [VMD](#vmd)
+        - [Create a .destop file on Linux to open VMD using explorer](#create-a-destop-file-on-linux-to-open-vmd-using-explorer)
+        - [Open LAMMPS data files](#open-lammps-data-files)
+        - [Tcl toolbox](#tcl-toolbox)
+            - [Autocomplete in VMD text mode shell](#autocomplete-in-vmd-text-mode-shell)
+            - [Render in png format with tachyon](#render-in-png-format-with-tachyon)
+            - [Render with tachyon and transparency and smaller size](#render-with-tachyon-and-transparency-and-smaller-size)
+        - [Tutorials](#tutorials)
+            - [Render a snapshot](#render-a-snapshot)
+        - [Crop an image](#crop-an-image)
+            - [Operations on list](#operations-on-list)
+            - [Wrap a selection](#wrap-a-selection)
+            - [draw a dashed line between two atoms and a measure distance](#draw-a-dashed-line-between-two-atoms-and-a-measure-distance)
+    - [Python Development](#python-development)
+        - [Tests](#tests)
+    - [Conda](#conda)
+        - [Look for a package in a given environment](#look-for-a-package-in-a-given-environment)
+        - [Look for a package in all conda environments](#look-for-a-package-in-all-conda-environments)
+        - [Install an environment out of the default folder](#install-an-environment-out-of-the-default-folder)
+        - [Python script that create backups of conda environment](#python-script-that-create-backups-of-conda-environment)
+        - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
+        - [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
+    - [Pip](#pip)
+        - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
+    - [Git](#git)
+        - [Version a git repo](#version-a-git-repo)
+        - [Untrack files](#untrack-files)
+        - [Logging activity](#logging-activity)
+        - [Add remote repo](#add-remote-repo)
+        - [Merging a branch on another](#merging-a-branch-on-another)
+        - [Add one commit from another branch](#add-one-commit-from-another-branch)
+        - [Keep local changes not committed in memory](#keep-local-changes-not-committed-in-memory)
+    - [Keepass](#keepass)
+        - [Download linux client](#download-linux-client)
+        - [Get passwords saved in a web browser](#get-passwords-saved-in-a-web-browser)
+        - [Use auto-type to fill automatically fields when signing in from a web page](#use-auto-type-to-fill-automatically-fields-when-signing-in-from-a-web-page)
+        - [Add urls in web page titles](#add-urls-in-web-page-titles)
+        - [Auto-typing format](#auto-typing-format)
+    - [KeepassXC other method](#keepassxc-other-method)
+        - [Install](#install)
+        - [Autofill](#autofill)
+    - [Keepass on Android](#keepass-on-android)
+    - [Searching to an entry in a web browser on Android](#searching-to-an-entry-in-a-web-browser-on-android)
+    - [Gdrive](#gdrive)
+    - [NextCloud](#nextcloud)
+        - [Install Nextcloud using apt and PPA sources](#install-nextcloud-using-apt-and-ppa-sources)
+        - [Uninstall all nextcloud packages and dependencies](#uninstall-all-nextcloud-packages-and-dependencies)
+        - [Using snap](#using-snap)
+    - [Latex](#latex)
+        - [Latex distribution](#latex-distribution)
+        - [Forward/backward previex](#forwardbackward-previex)
+        - [On VSCode](#on-vscode)
+    - [Github](#github)
+        - [Save a token password key](#save-a-token-password-key)
+        - [Deposit of a source code on HAL](#deposit-of-a-source-code-on-hal)
+    - [Zotero](#zotero)
+        - [Commands](#commands)
+            - [Open the preview in Vscode](#open-the-preview-in-vscode)
+        - [Open Zotero with default GTK environment](#open-zotero-with-default-gtk-environment)
+        - [Backup/Restore Zotero](#backuprestore-zotero)
+        - [Repair sqlite](#repair-sqlite)
+        - [Syncronize Zotero on a remote folder](#syncronize-zotero-on-a-remote-folder)
+    - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
+        - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
+    - [VSCode](#vscode)
+        - [Useful extensions](#useful-extensions)
+        - [Shortcuts](#shortcuts)
+            - [Overview of principal keyboard shortcuts :](#overview-of-principal-keyboard-shortcuts-)
+        - [Markdown](#markdown)
+            - [Preview markdown on the right side](#preview-markdown-on-the-right-side)
+            - [Extensions :](#extensions-)
+            - [Link references in a markdown file](#link-references-in-a-markdown-file)
+            - [Image centered with caption :](#image-centered-with-caption-)
+    - [Inkscape](#inkscape)
+    - [Network](#network)
+        - [Get IP adress from domain name](#get-ip-adress-from-domain-name)
+        - [VPN](#vpn)
+            - [Method using nmcli commands](#method-using-nmcli-commands)
+            - [Use VPN on Debian 10 machine sirius](#use-vpn-on-debian-10-machine-sirius)
+            - [GUI OpenVPN](#gui-openvpn)
+            - [Install old version of OpenVPN in Ubuntu 22.04 in order to use old .ovpn files](#install-old-version-of-openvpn-in-ubuntu-2204-in-order-to-use-old-ovpn-files)
+    - [Jupyter](#jupyter)
+        - [S’identifier en tant qu’administrateur](#sidentifier-en-tant-quadministrateur)
+        - [Convert a notebook into a python script](#convert-a-notebook-into-a-python-script)
+        - [Change conda environment](#change-conda-environment)
+        - [Work remotely](#work-remotely)
+            - [Open a jupyter notebook from a remote server:](#open-a-jupyter-notebook-from-a-remote-server)
+            - [List jupyter notebooks servers open :](#list-jupyter-notebooks-servers-open-)
+            - [Delete a jupyter server :](#delete-a-jupyter-server-)
+            - [Delete all jupyter servers and possible crashed servers :](#delete-all-jupyter-servers-and-possible-crashed-servers-)
+    - [Movie converter](#movie-converter)
+            - [Decrease size of a movie and convert formats](#decrease-size-of-a-movie-and-convert-formats)
+        - [Convert images into a movie](#convert-images-into-a-movie)
+    - [Vim](#vim)
+        - [Crypt a file low level of encryption:](#crypt-a-file-low-level-of-encryption)
+        - [Compare files through ssh](#compare-files-through-ssh)
+    - [AppImage](#appimage)
+    - [CCDC : Cristallographic Database](#ccdc--cristallographic-database)
+    - [Other linux commands](#other-linux-commands)
+        - [Update search using the KDE research](#update-search-using-the-kde-research)
+        - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
 
 <!-- /TOC -->
     - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
@@ -119,7 +119,8 @@
 <!-- /TOC -->
 
 ## Gromacs
-#### Compile Gromacs with X-Window (`gmx view`), GPU CUDA support 
+
+#### Compile Gromacs with X-Window (gmx view), GPU CUDA supportrt 
 https://manual.gromacs.org/documentation/current/install-guide/index.html
 
 ```Bash
@@ -165,7 +166,7 @@ sudo wget "https://gist.githubusercontent.com/pjohansson/7a86da349161595bd4c1fa7
 source /path/to/gromacs/bin/GMXRC.fish
 ```
 
-### Use a handmade script `~/.local/bin/source_gmx` to source files in different location (in a fish shell)
+### Use a handmade script ~/.local/bin/source_gmx to source files in different location (in a fish shell)l)
 
 ```bash
 #!/bin/bash
@@ -225,7 +226,7 @@ source_gmx -f 2019.2
 
 ## VMD
 
-### Create a `.destop` file on Linux to open VMD using explorer
+### Create a .destop file on Linux to open VMD using explorerer
 ref : https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/29164.html
 
 ```bash
@@ -427,7 +428,7 @@ TODO : add also deactivate file
 
 ## Pip
 
-### Install/Uninstall a package from source using `setup.py` and `distutils`
+### Install/Uninstall a package from source using setup.py and distutilsils`
 
 Go to the subdirectory where the package directory is and :
 ```Bash
@@ -606,6 +607,7 @@ https://doc.ubuntu-fr.org/google_drive
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
 Sources : https://doc.ubuntu-fr.org/nextcloud-client
+
 ### Install Nextcloud using apt and PPA sources
 ```Bash
 sudo add-apt-repository ppa:nextcloud-devs/client
@@ -806,6 +808,7 @@ When using @ symbol, we can now insert a reference from the bibliography found i
 ![Legende](/path/to/image.png)
 </div><figcaption>Figure 11 </figcaption></figure>
 ```
+
 ## Inkscape
 To add the lateral scroll : CTRL-B
 
@@ -897,6 +900,7 @@ To prevent the uupdate to be automatic :
 ```Bash
 sudo apt-mark hold openvpn
 ```
+
 ## Jupyter
 
 ### S’identifier en tant qu’administrateur
