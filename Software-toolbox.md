@@ -769,9 +769,9 @@ When using @ symbol, we can now insert a reference from the bibliography found i
 </div><figcaption>Figure 11 </figcaption></figure>
 ```
 
-#### Debbuger python
+### Debbuger python
 
-##### How to use VScode to debug a python script that calls modules ?
+#### How to use VScode to debug a python script that calls modules ?
 Ofte, we want to access the values of the variable before an exception occurs in the code. These exceptions often appear inside the modules with use .
 1) First click on debug with python using a json file :
 
