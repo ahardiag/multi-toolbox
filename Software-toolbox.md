@@ -3,13 +3,9 @@
 <!-- TOC -->
 
 - [General Software Toolbox for Linux](#general-software-toolbox-for-linux)
-    - [Gromacs](#gromacs)
-            - [Compile Gromacs with X-Window gmx view, GPU CUDA support](#compile-gromacs-with-x-window-gmx-view-gpu-cuda-support)
-            - [Compile Gromacs 2024.3 with GPU CUDA support, Ubuntu 22.04 and GPU GeForce 1660 SUPER](#compile-gromacs-20243-with-gpu-cuda-support-ubuntu-2204-and-gpu-geforce-1660-super)
-        - [Change gromacs version in a fish shell](#change-gromacs-version-in-a-fish-shell)
-        - [Use a handmade script ~/.local/bin/source_gmx to source files in different location in a fish shell](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shell)
+        - [Use a handmade script ~/.local/bin/source_gmx to source files in different location in a fish shelll](#use-a-handmade-script-localbinsource_gmx-to-source-files-in-different-location-in-a-fish-shelll)
     - [VMD](#vmd)
-        - [Create a .destop file on Linux to open VMD using explorer](#create-a-destop-file-on-linux-to-open-vmd-using-explorer)
+        - [Create a .destop file on Linux to open VMD using explorerer](#create-a-destop-file-on-linux-to-open-vmd-using-explorerer)
         - [Open LAMMPS data files](#open-lammps-data-files)
         - [Tcl toolbox](#tcl-toolbox)
             - [Autocomplete in VMD text mode shell](#autocomplete-in-vmd-text-mode-shell)
@@ -31,7 +27,7 @@
         - [Set environment variables in conda env](#set-environment-variables-in-conda-env)
         - [Source a file when activating a conda environment](#source-a-file-when-activating-a-conda-environment)
     - [Pip](#pip)
-        - [Install/Uninstall a package from source using setup.py and distutils](#installuninstall-a-package-from-source-using-setuppy-and-distutils)
+        - [Install/Uninstall a package from source using setup.py and distutilsils](#installuninstall-a-package-from-source-using-setuppy-and-distutilsils)
     - [Git](#git)
         - [Version a git repo](#version-a-git-repo)
         - [Untrack files](#untrack-files)
@@ -81,6 +77,8 @@
             - [Extensions :](#extensions-)
             - [Link references in a markdown file](#link-references-in-a-markdown-file)
             - [Image centered with caption :](#image-centered-with-caption-)
+            - [Debbuger python](#debbuger-python)
+                - [How to use VScode to debug a python script that calls modules ?](#how-to-use-vscode-to-debug-a-python-script-that-calls-modules-)
     - [Inkscape](#inkscape)
     - [Network](#network)
         - [Get IP adress from domain name](#get-ip-adress-from-domain-name)
@@ -111,44 +109,6 @@
         - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
 
 <!-- /TOC -->
-    - [Open the current path with the file explorer](#open-the-current-path-with-the-file-explorer)
-
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
-<!-- /TOC -->
-
-## Gromacs
-
-#### Compile Gromacs with X-Window (gmx view), GPU CUDA supportrt 
-https://manual.gromacs.org/documentation/current/install-guide/index.html
-
-```Bash
-tar xfz gromacs-2022.3.tar.gz
-cd gromacs-2022.3
-mkdir build
-cd build
-cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DGMX_X11=on -DCMAKE_INSTALL_PREFIX=/opt/gromacs-2022/
-make
-make check
-sudo make install
-source /opt/gromacs/bin/GMXRC
-```
-
-#### Compile Gromacs 2024.3 with GPU CUDA support, Ubuntu 22.04 and GPU GeForce 1660 SUPER
-1) First install the Nvidia drivers
-```
-sudo add-apt-repository ppa:graphics-drivers/ppa
-sudo apt update
-sudo apt install nvidia-drivers-560-open
-```
-Or use the GUI drivers manager
-Then, reboot.
-
-2) Install the Cuda toolkit, select only the toolkit, not the drivers to install
-```
-wget https://developer.download.nvidia.com/compute/cuda/12.6.1/local_installers/cuda_12.6.1_560.35.03_linux.run
-sudo sh cuda_12.6.1_560.35.03_linux.run
 ```
 3) Compile Gromacs
 
@@ -808,6 +768,46 @@ When using @ symbol, we can now insert a reference from the bibliography found i
 ![Legende](/path/to/image.png)
 </div><figcaption>Figure 11 </figcaption></figure>
 ```
+
+#### Debbuger python
+
+##### How to use VScode to debug a python script that calls modules ?
+Ofte, we want to access the values of the variable before an exception occurs in the code. These exceptions often appear inside the modules with use .
+1) First click on debug with python using a json file :
+
+<figure align="center"><div style="text-align:center; width:200px;margin: 0 auto">
+
+![Legende](images/python-debugger_01.png)
+</div></<figcaption></figcaption></figure>
+
+2) Modify the json file that have been automatically generated in `~/.vscode/launch.json` and set the `justMyCode` parameters to `false`:
+
+```json
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "justMyCode": false,
+            "console": "integratedTerminal"
+        }
+    ]
+}
+```
+3) Then run the python debugger on your python scrip using the breakpoint inside the module file, you show now see the values of the variables for the state of the chosen breakpoint.
+
+<figure align="center"><div style="text-align:center; width:200px;margin: 0 auto">
+
+![Legende](images/python-debugger_02.png)
+</div></<figcaption></figcaption></figure>
+
 
 ## Inkscape
 To add the lateral scroll : CTRL-B
