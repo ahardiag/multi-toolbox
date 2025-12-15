@@ -66,6 +66,7 @@
         - [Backup/Restore Zotero](#backuprestore-zotero)
         - [Repair sqlite](#repair-sqlite)
         - [Syncronize Zotero on a remote folder](#syncronize-zotero-on-a-remote-folder)
+        - [Store Zotero files with Zotmoov](#store-zotero-files-with-zotmoov)
     - [Google Drive on linux architecture](#google-drive-on-linux-architecture)
         - [Via Google-drive-ocamlfuse](#via-google-drive-ocamlfuse)
     - [VSCode](#vscode)
@@ -694,6 +695,16 @@ e.g., you can use a remote folder previously mouted using sshfs, or a folder hos
 </div><figcaption>Synchronisation of Zotero on a remote folder.</figcaption></figure>
 
 **Warning** : Pay attention on closing Zotero before opening Zotero on another machine, otherwise you may damage the sqlite database file.
+
+### Store Zotero files with Zotmoov
+Zotmoov is a Zotero plugin that allows to interface a cloud storage for large files (e.g. PDFs) in Zotero. PDFs files are then opened using a relative path using to where is stored the base `Zotmoov` directory , e.g. : G:\My Drive\ZotMoov.
+Tested with Google Drive in Windows 11 and Ubuntu 22.04 
+
+Download: 
+https://github.com/wileyyugioh/zotmoov?tab=readme-ov-file
+
+Configuration: 
+https://guides.lib.berkeley.edu/zotero/zotfile
 
 ## Google Drive on linux architecture
 
