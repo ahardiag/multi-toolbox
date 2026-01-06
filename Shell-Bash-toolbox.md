@@ -911,6 +911,19 @@ convert old.png -resize 50%  new.png
 
 ### Other commands
 
+#### Convert all PDF to png Images
+
+Install (if not already)
+```bash
+sudo apt install poppler-utils
+```
+
+Convert all PDFs → PNG (300 DPI)
+```bash
+for f in *.pdf; do
+    pdftoppm -png -r 300 "$f" "${f%.pdf}"
+done
+```
 #### Récupérer un mot dans une suite de mots
 ```Bash
 N=3  
