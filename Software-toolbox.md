@@ -567,6 +567,44 @@ https://doc.ubuntu-fr.org/google_drive
 ### rclone
 Tested on Ubuntu 24
 https://askubuntu.com/questions/1538475/failing-to-mount-google-drive-24-04-1-lts
+#### Automating with Systemd and Rclone when starting a session
+This method ensures Rclone starts on login and keeps your drive mounted. 
+
+- Create a Service Folder:
+```bash
+mkdir -p $HOME/.config/systemd/user/
+```
+- Create the Service File: Create a file named `$HOME/.config/systemd/user/rclone-mount.service` and add the following:
+```ini
+[Unit]
+Description=Rclone Mount
+After=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/rclone mount remote_name: /path/to/local/mount \
+--config %h/.config/rclone/rclone.conf \
+--vfs-cache-mode full
+ExecStop=/bin/fusermount -u /path/to/local/mount
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+- Replace `remote_name`: and `/path/to/local/mount` with your configuration.
+- Enable and Start the Service:
+ ```bash
+
+ systemctl --user daemon-reload
+ systemctl --user enable rclone-mount.service
+ systemctl --user start rclone-mount.service
+```
+
+ - Allow Service to Run Without Login:
+```bash
+loginctl enable-linger $USER
+```
+   
 
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
