@@ -560,10 +560,13 @@ For more detailed tutorials,see :
 ## Searching to an entry in a web browser on Android
 When you want to do a quick search in your Keepass database on Android, like an URL, it is sometimes painful to do manually the search by switching the app. A nice feature is implemented in Keepass2android or KeepassDX : you can simply share the web page directly with the password manager, which allow to be quicker.
 
-## Gdrive 
+## Gdrive
+### Google account in Ubuntu
 Synchronize Google Drive from a local folder (tested on Ubuntu 22.04):
 https://doc.ubuntu-fr.org/google_drive
-
+### rclone
+Tested on Ubuntu 24
+https://askubuntu.com/questions/1538475/failing-to-mount-google-drive-24-04-1-lts
 
 ## NextCloud
 Tested on Ubuntu 18.04, January 9th 2023:
